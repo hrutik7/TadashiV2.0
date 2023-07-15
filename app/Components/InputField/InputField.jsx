@@ -20,11 +20,12 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   input: {
-    height: 40,
+    height: 50,
     borderColor: '#6528f7',
     borderWidth: 1,
-    borderRadius: 100,
+    borderRadius: 10,
     paddingHorizontal: 10,
+    fontWeight: 'bold'
   },
 });
 

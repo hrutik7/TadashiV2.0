@@ -9,21 +9,44 @@ const Login = () => {
   const [password, setPassword] = useState('');
 
   return (
-    <View style={{
-      flex: 1,
-      backgroundColor:"#EDE4FF"
-      
-    }}>
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: '#EDE4FF',
+      }}>
       <View style={styles.LogoContainer}>
-      <Image 
-      style={styles.image}
-      source={require('../../Assets/Tadashi.png')}
-      />
+        <Image
+          style={styles.image}
+          source={require('../../Assets/Tadashi.png')}
+        />
       </View>
 
-      <View style={styles.InputContainer}></View>
+      <View style={styles.InputContainer}>
+        <InputField
+          placeholder="Username"
+          value={Username}
+          onChangeText={text => setUsername(text)}
+        />
+        <InputField
+          placeholder="email"
+          value={email}
+          onChangeText={text => setEmail(text)}
+        />
 
-      <View style={styles.ButtonContainer}></View>
+        <InputField
+          placeholder="password"
+          value={password}
+          onChangeText={text => setPassword(text)}
+        />
+      </View>
+
+      <View style={styles.ButtonContainer}>
+          <CustomTouchableOpacity
+          style={{backgroundColor: '#6528F7',width:'80%',alignSelf:'center',marginTop:20}}
+            title="Sign Up"
+            onPress={() => console.log('Login')}
+          />
+      </View>
     </View>
   );
 };
@@ -31,26 +54,28 @@ const Login = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:"green",
+    backgroundColor: 'green',
     alignItems: 'center',
     justifyContent: 'center',
   },
   LogoContainer: {
-    flex:3,
-    width : "100%",
-    
-    alignItems:"center",
-    
+    flex: 3,
+    width: '100%',
+
+    alignItems: 'center',
   },
   InputContainer: {
-    flex:2
+    flex: 2,
+    width: '80%',
+    alignSelf: 'center',
   },
   ButtonContainer: {
-    flex:1
+    flex: 1,
+    width: '100%',
+    
   },
   image: {
-    
-    width: "100%",
+    width: '100%',
     height: 300,
   },
 });
