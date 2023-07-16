@@ -26,7 +26,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import InputField from './app/Components/InputField/InputField';
 import Login from './app/Screens/Login/Login';
-
+import Warning from './app/Screens/WarningScreen/Warning';
 
 
 
@@ -41,7 +41,7 @@ function App(): JSX.Element {
   return (
     <SafeAreaView style={{flex:1}} >
       
-      <Login />
+      <Warning />
     </SafeAreaView>
   );
 }

@@ -11,7 +11,7 @@ const CustomTouchableOpacity = ({ onPress, title, style }) => {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: 'blue',
+    backgroundColor: 'red',
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 8,
@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 16,
     letterSpacing: 2,
+    fontWeight: 'bold',
   },
 });
 
