@@ -5,7 +5,7 @@ import InputField from '../../Components/InputField/InputField';
 import CustomTouchableOpacity from '../../Components/Button/Button';
 
 import {Alert} from 'react-native';
-const Login = () => {
+const SignUp = () => {
   const [Username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -29,7 +29,11 @@ const Login = () => {
           value={Username}
           onChangeText={text => setUsername(text)}
         />
-       
+       <InputField
+          placeholder="email"
+          value={email}
+          onChangeText={text => setEmail(text)}
+        /> 
 
         <InputField
           placeholder="password"
@@ -38,19 +42,19 @@ const Login = () => {
         />
       </View>
       <View style={styles.AlreadyContainer}>
-       <TouchableOpacity onPress={()=>setLogin(true)}>
-      <Text style={{color: '#6528F7'}}>I need to register</Text>
-         </TouchableOpacity>
+      <TouchableOpacity onPress={()=>setLogin(false)}>
+      <Text style={{color: '#6528F7'}}>Already have an account?</Text>
+      </TouchableOpacity> 
       </View>
       <View style={styles.ButtonContainer}>
-          {
-            Username.length > 0 && password.length > 0 ? <CustomTouchableOpacity
-          style={{backgroundColor: '#6528F7',width:'80%',alignSelf:'center',marginTop:20}}
-            title="Submit"
-            onPress={() => login ?  console.log('Login') : console.log('Register')}
-          />
-        : null
-        }
+        {  
+           email.length > 0 && Username.length > 0 && password.length > 0 ? <CustomTouchableOpacity 
+        style={{backgroundColor: '#D7BBF5',width:'80%',alignSelf:'center',marginTop:20}}
+        title="SignUp"
+        onPress={() => Alert.alert('Please fill all the fields')}
+        disabled
+        /> : null}
+        
       </View>
     </View>
   );
@@ -95,4 +99,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Login;
+export default SignUp;

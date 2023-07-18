@@ -1,44 +1,54 @@
-import React, { useState } from 'react';
-import { View, Modal, Button, Text } from 'react-native';
+import React from 'react';
+import { Modal, View, Text, TouchableOpacity } from 'react-native';
 
-const PopupModal = ({ buttonText, modalContent }) => {
-  const [modalVisible, setModalVisible] = useState(true);
-
-  const openModal = () => {
-    setModalVisible(true);
-  };
-
-  const closeModal = () => {
-    setModalVisible(false);
-  };
-
+const PopModal = ({ isVisible, onClose, title, children }) => {
   return (
-    <View style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#EDE4FF',
-        width: '100%',
-    }}>
-      
-
-      <Modal visible={modalVisible} animationType="slide" transparent={true}
-      style={{
-        flex: 1,
-        backgroundColor: 'red',
-        width:100,
-        height:100,
-    }}
-      >
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-          <View style={{ backgroundColor: 'white', padding: 20 }}>
-        <Text>  {modalContent}</Text>  
-            <Button title="Close" onPress={closeModal} />
-          </View>
+    <Modal
+      visible={isVisible}
+      transparent
+      animationType="fade"
+      onRequestClose={onClose}
+    >
+      <View style={styles.container}>
+        <View style={styles.card}>
+          <Text style={styles.title}>{title}</Text>
+          {children}
+          <TouchableOpacity onPress={onClose} style={styles.closeButton}>
+            <Text style={styles.closeButtonText}>Accept & continue</Text>
+          </TouchableOpacity>
         </View>
-      </Modal>
-    </View>
+      </View>
+    </Modal>
   );
 };
 
-export default PopupModal;
+const styles = {
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  card: {
+    backgroundColor: 'white',
+    borderRadius: 8,
+    padding: 16,
+    maxWidth: '80%',
+    maxHeight: '80%',
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 8,
+  },
+  closeButton: {
+    alignSelf: 'flex-end',
+    marginTop: 16,
+  },
+  closeButtonText: {
+    color: 'blue',
+  },
+};
+
+
+export default PopModal;
