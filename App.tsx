@@ -28,8 +28,9 @@ import InputField from './app/Components/InputField/InputField';
 import Login from './app/Screens/Login/Login';
 import WarningScreen from './app/Screens/WarningScreen/Warning';
 import Gender from './app/Screens/Gender/Gender';
-
-
+import Explain from './app/Screens/Explain/Explain';
+import TagsScreen from './app/Screens/Tags/Tags';
+import WaitingScreen from './app/Screens/WaitingMatch/WaitingMatch';
 function App(): JSX.Element {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -41,7 +42,7 @@ function App(): JSX.Element {
   return (
     <SafeAreaView style={{flex:1}} >
       
-      <Gender />
+      <WaitingScreen />
     </SafeAreaView>
   );
 }
