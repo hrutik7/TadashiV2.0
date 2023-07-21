@@ -31,6 +31,10 @@ import Gender from './app/Screens/Gender/Gender';
 import Explain from './app/Screens/Explain/Explain';
 import TagsScreen from './app/Screens/Tags/Tags';
 import WaitingScreen from './app/Screens/WaitingMatch/WaitingMatch';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+const Stack = createNativeStackNavigator();
 function App(): JSX.Element {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -40,10 +44,15 @@ function App(): JSX.Element {
   
 
   return (
-    <SafeAreaView style={{flex:1}} >
+    <NavigationContainer>{/* Rest of your app code */}
+    
       
-      <WaitingScreen />
-    </SafeAreaView>
+    <Stack.Navigator>
+    
+        <Stack.Screen name="Login" component={Login} />
+          </Stack.Navigator>
+   
+    </NavigationContainer>
   );
 }
 
