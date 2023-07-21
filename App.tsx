@@ -5,7 +5,7 @@
  * @format
  */
 
-import React,{useEffect,useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
@@ -16,7 +16,7 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-import SplashScreen from "react-native-splash-screen"
+import SplashScreen from 'react-native-splash-screen';
 import {
   Colors,
   DebugInstructions,
@@ -31,9 +31,9 @@ import Gender from './app/Screens/Gender/Gender';
 import Explain from './app/Screens/Explain/Explain';
 import TagsScreen from './app/Screens/Tags/Tags';
 import WaitingScreen from './app/Screens/WaitingMatch/WaitingMatch';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import SignUp from './app/Screens/Signup/SignUp';
 const Stack = createNativeStackNavigator();
 function App(): JSX.Element {
   const [email, setEmail] = useState('');
@@ -41,23 +41,47 @@ function App(): JSX.Element {
   useEffect(() => {
     SplashScreen.hide(); //hides the splash screen on app load.
   }, []);
-  
 
   return (
-    <NavigationContainer>{/* Rest of your app code */}
-    
-      
-    <Stack.Navigator>
-    
-        <Stack.Screen name="Login" component={Login} />
-          </Stack.Navigator>
-   
+    <NavigationContainer>
+      {/* Rest of your app code */}
+
+      <Stack.Navigator>
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="SignUp"
+          component={SignUp}
+        />
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="Login"
+          component={Login}
+        />
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="WarningScreen"
+          component={WarningScreen}
+        />
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="Gender"
+          component={Gender}
+        />
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="Explain"
+          component={Explain}
+        />
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="TagsScreen"
+          component={TagsScreen}
+        />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-
-});
+const styles = StyleSheet.create({});
 
 export default App;
