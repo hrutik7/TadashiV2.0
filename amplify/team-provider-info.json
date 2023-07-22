@@ -1,15 +1,20 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-tada-dev-161101-authRole",
-      "UnauthRoleArn": "arn:aws:iam::880372991257:role/amplify-tada-dev-161101-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::880372991257:role/amplify-tada-dev-161101-authRole",
+      "AuthRoleName": "amplify-tada-dev-142116-authRole",
+      "UnauthRoleArn": "arn:aws:iam::880372991257:role/amplify-tada-dev-142116-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::880372991257:role/amplify-tada-dev-142116-authRole",
       "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-tada-dev-161101-deployment",
-      "UnauthRoleName": "amplify-tada-dev-161101-unauthRole",
-      "StackName": "amplify-tada-dev-161101",
-      "StackId": "arn:aws:cloudformation:us-east-1:880372991257:stack/amplify-tada-dev-161101/c714dce0-2169-11ee-bf69-0a75814dc119",
-      "AmplifyAppId": "d1ucusam73ia1s"
+      "DeploymentBucketName": "amplify-tada-dev-142116-deployment",
+      "UnauthRoleName": "amplify-tada-dev-142116-unauthRole",
+      "StackName": "amplify-tada-dev-142116",
+      "StackId": "arn:aws:cloudformation:us-east-1:880372991257:stack/amplify-tada-dev-142116/ee7b48a0-286c-11ee-b9a7-12b3e1efe395",
+      "AmplifyAppId": "d3kcmxkgdwwc7a"
+    },
+    "categories": {
+      "api": {
+        "tada": {}
+      }
     }
   }
 }

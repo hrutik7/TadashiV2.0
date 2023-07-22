@@ -34,6 +34,10 @@ import WaitingScreen from './app/Screens/WaitingMatch/WaitingMatch';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import SignUp from './app/Screens/Signup/SignUp';
+// import { API, graphqlOperation } from 'aws-amplify';
+// import { createTodo, updateTodo, deleteTodo } from './graphql/mutations';
+
+const todo = { name: "My first todo", description: "Hello world!" };
 const Stack = createNativeStackNavigator();
 function App(): JSX.Element {
   const [email, setEmail] = useState('');
