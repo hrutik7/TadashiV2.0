@@ -88,6 +88,48 @@ export const onDeleteUserLogin = /* GraphQL */ `
     }
   }
 `;
+export const onCreateUserInfo = /* GraphQL */ `
+  subscription OnCreateUserInfo($filter: ModelSubscriptionUserInfoFilterInput) {
+    onCreateUserInfo(filter: $filter) {
+      id
+      username
+      gender
+      describe
+      tags
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onUpdateUserInfo = /* GraphQL */ `
+  subscription OnUpdateUserInfo($filter: ModelSubscriptionUserInfoFilterInput) {
+    onUpdateUserInfo(filter: $filter) {
+      id
+      username
+      gender
+      describe
+      tags
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onDeleteUserInfo = /* GraphQL */ `
+  subscription OnDeleteUserInfo($filter: ModelSubscriptionUserInfoFilterInput) {
+    onDeleteUserInfo(filter: $filter) {
+      id
+      username
+      gender
+      describe
+      tags
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
 export const onCreateRestaurant = /* GraphQL */ `
   subscription OnCreateRestaurant(
     $filter: ModelSubscriptionRestaurantFilterInput

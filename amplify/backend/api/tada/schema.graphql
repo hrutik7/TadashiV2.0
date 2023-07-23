@@ -23,7 +23,7 @@ type UserInfo @model {
   username: String!
   gender: String!  #what are u looking for
   describe: String!
-  tags: array!
+  tags: [Tags] 
 }
 
 

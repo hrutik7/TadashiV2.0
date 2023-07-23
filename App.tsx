@@ -36,7 +36,8 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import SignUp from './app/Screens/Signup/SignUp';
 // import { API, graphqlOperation } from 'aws-amplify';
 // import { createTodo, updateTodo, deleteTodo } from './graphql/mutations';
-
+import { API } from 'aws-amplify';
+import * as queries from './src/graphql/queries';
 const todo = { name: "My first todo", description: "Hello world!" };
 const Stack = createNativeStackNavigator();
 function App(): JSX.Element {

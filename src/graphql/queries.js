@@ -80,6 +80,42 @@ export const listUserLogins = /* GraphQL */ `
     }
   }
 `;
+export const getUserInfo = /* GraphQL */ `
+  query GetUserInfo($id: ID!) {
+    getUserInfo(id: $id) {
+      id
+      username
+      gender
+      describe
+      tags
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const listUserInfos = /* GraphQL */ `
+  query ListUserInfos(
+    $filter: ModelUserInfoFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listUserInfos(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        username
+        gender
+        describe
+        tags
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
 export const getRestaurant = /* GraphQL */ `
   query GetRestaurant($id: ID!) {
     getRestaurant(id: $id) {
