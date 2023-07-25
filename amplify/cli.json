@@ -15,7 +15,7 @@
       "usesubusernamefordefaultidentityclaim": true,
       "usefieldnameforprimarykeyconnectionfield": false,
       "enableautoindexquerynames": true,
-      "respectprimarykeyattributesonconnectionfield": true,
+      "respectprimarykeyattributesonconnectionfield": false,
       "shoulddeepmergedirectiveconfigdefaults": false,
       "populateownerfieldforstaticgroupauth": true
     },

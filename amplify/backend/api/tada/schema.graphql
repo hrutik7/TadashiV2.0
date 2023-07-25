@@ -18,13 +18,13 @@ type UserLogin @model {
   password: String!
 }
 
-type UserInfo @model {
-  id: ID!
-  username: String!
-  gender: String!  #what are u looking for
-  describe: String!
-  tags: [Tags] 
-}
+# type UserInfo @model {
+#  id: ID!
+#  username: String!
+#  gender: String!  #what are u looking for
+# describe: String!
+#  tags: [Tags] 
+#}
 
 
 type Restaurant @model {
@@ -34,3 +34,11 @@ type Restaurant @model {
   city: String!
 }
 
+
+
+type User @model @searchable {
+  id: ID!
+  username: String!
+  email: String!
+  password: String!
+}

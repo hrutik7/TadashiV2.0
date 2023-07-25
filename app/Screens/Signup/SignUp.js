@@ -6,8 +6,11 @@ import CustomTouchableOpacity from '../../Components/Button/Button';
 import * as mutations from '../../../src/graphql/mutations'
 import {Alert} from 'react-native';
 import { API, graphqlOperation } from 'aws-amplify';
-const SignUp = () => {
-  const [Username, setUsername] = useState('');
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Auth } from 'aws-amplify';
+const SignUp = ({ navigation }) => {
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [login , setLogin] = useState(false)
@@ -24,18 +27,24 @@ const SignUp = () => {
   // };
 const createuser = async (a,b,c) =>{
   
-  setsignupDetails((prevUser) => ({
-    ...prevUser, // Spread the previous state to preserve other properties
-    username: a, // Update the 'name' property to 'John'
-    email: b, // Update the 'age' property to 30
-    password: c// Update the 'email' property to 'john@example.com'
-  }));
-  const newTodo = await API.graphql({ 
-    query: mutations.createUserSignup, 
-    variables: { input: signupDetails }
-  });
-
-  console.log(newTodo,"newtodo")
+  try {
+    const { user } = await Auth.signUp({
+      username,
+      password,
+      attributes: {
+        email,          // optional
+      //   phone_number,   // optional - E.164 number convention
+      //   // other custom attributes 
+      },
+      autoSignIn: { // optional - enables auto sign in after user is confirmed
+        enabled: false,
+      }
+    });
+    console.log(user);
+    navigation.navigate('Confirmation')
+  } catch (error) {
+    console.log('error signing up:', error);
+  }
 }
 
 
@@ -64,7 +73,7 @@ const createuser = async (a,b,c) =>{
       <View style={styles.InputContainer}>
         <InputField
           placeholder="Username"
-          value={Username}
+          value={username}
           onChangeText={text => setUsername(text)}
         />
        <InputField
@@ -80,18 +89,18 @@ const createuser = async (a,b,c) =>{
         />
       </View>
       <View style={styles.AlreadyContainer}>
-      <TouchableOpacity onPress={()=>setLogin(false)}>
+      <TouchableOpacity onPress={()=> navigation.navigate('Login')}>
       <Text style={{color: '#6528F7'}}>Already have an account?</Text>
       </TouchableOpacity> 
       </View>
       <View style={styles.ButtonContainer}>
         {  
-           email.length > 0 && Username.length > 0 && password.length > 0 ? <CustomTouchableOpacity 
+           email.length > 0 && username.length > 0 && password.length > 0 ? <CustomTouchableOpacity 
         style={{backgroundColor: '#6528F7',width:'80%',alignSelf:'center',marginTop:20}}
         title="SignUp"
         onPress={() => {
           
-          createuser(Username,email,password)
+          createuser(username,email,password)
         
         } }
         disabled

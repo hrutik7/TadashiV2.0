@@ -8,16 +8,15 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {Alert} from 'react-native';
 import { Auth } from 'aws-amplify';
 
-const Login = ({navigation}) => {
+const Confirmation = ({navigation}) => {
   const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [login , setLogin] = useState(false)
+  const [code ,setCode] = useState('')
 
-  const signIn = async(username,password) =>{
-    console.log(username,password)
+  const signIn = async(username,code) =>{
+
+    console.log(username,parseInt(code))
     try {
-      const user = await Auth.signIn(username, password);
+      const user = await Auth.signIn(username, code);
       console.log(user,"user is here....")
     } catch (error) {
       console.log('error signing in', error);
@@ -29,12 +28,7 @@ const Login = ({navigation}) => {
         flex: 1,
         backgroundColor: '#EDE4FF',
       }}>
-      <View style={styles.LogoContainer}>
-        <Image
-          style={styles.image}
-          source={require('../../Assets/Tadashi.png')}
-        />
-      </View>
+      
 
       <View style={styles.InputContainer}>
         <InputField
@@ -45,23 +39,19 @@ const Login = ({navigation}) => {
        
 
         <InputField
-          placeholder="password"
-          value={password}
-          onChangeText={text => setPassword(text)}
+          placeholder="code"
+          value={code}
+          onChangeText={text => setCode(text)}
         />
       </View>
-      <View style={styles.AlreadyContainer}>
-       <TouchableOpacity onPress={()=>navigation.navigate("SignUp")}>
-      <Text style={{color: '#6528F7'}}>I need to register</Text>
-         </TouchableOpacity>
-      </View>
+      
       <View style={styles.ButtonContainer}>
           {
-            username.length > 0 && password.length > 0 ? <CustomTouchableOpacity
+            username.length > 0 && code.length > 0 ? <CustomTouchableOpacity
           style={{backgroundColor: '#6528F7',width:'80%',alignSelf:'center',marginTop:20}}
             title="Submit"
             onPress={() => {
-              signIn(username,password)
+                signIn(username,code)
             }}
           />
         : <CustomTouchableOpacity
@@ -114,4 +104,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Login;
+export default Confirmation;

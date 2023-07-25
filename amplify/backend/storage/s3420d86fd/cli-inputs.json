@@ -1,0 +1,12 @@
+{
+  "resourceName": "s3420d86fd",
+  "policyUUID": "420d86fd",
+  "bucketName": "tada3d7c8915f443472abdcae90737e7d041",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

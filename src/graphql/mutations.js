@@ -94,57 +94,6 @@ export const deleteUserLogin = /* GraphQL */ `
     }
   }
 `;
-export const createUserInfo = /* GraphQL */ `
-  mutation CreateUserInfo(
-    $input: CreateUserInfoInput!
-    $condition: ModelUserInfoConditionInput
-  ) {
-    createUserInfo(input: $input, condition: $condition) {
-      id
-      username
-      gender
-      describe
-      tags
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const updateUserInfo = /* GraphQL */ `
-  mutation UpdateUserInfo(
-    $input: UpdateUserInfoInput!
-    $condition: ModelUserInfoConditionInput
-  ) {
-    updateUserInfo(input: $input, condition: $condition) {
-      id
-      username
-      gender
-      describe
-      tags
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const deleteUserInfo = /* GraphQL */ `
-  mutation DeleteUserInfo(
-    $input: DeleteUserInfoInput!
-    $condition: ModelUserInfoConditionInput
-  ) {
-    deleteUserInfo(input: $input, condition: $condition) {
-      id
-      username
-      gender
-      describe
-      tags
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
 export const createRestaurant = /* GraphQL */ `
   mutation CreateRestaurant(
     $input: CreateRestaurantInput!
@@ -187,6 +136,54 @@ export const deleteRestaurant = /* GraphQL */ `
       name
       description
       city
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const createUser = /* GraphQL */ `
+  mutation CreateUser(
+    $input: CreateUserInput!
+    $condition: ModelUserConditionInput
+  ) {
+    createUser(input: $input, condition: $condition) {
+      id
+      username
+      email
+      password
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const updateUser = /* GraphQL */ `
+  mutation UpdateUser(
+    $input: UpdateUserInput!
+    $condition: ModelUserConditionInput
+  ) {
+    updateUser(input: $input, condition: $condition) {
+      id
+      username
+      email
+      password
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const deleteUser = /* GraphQL */ `
+  mutation DeleteUser(
+    $input: DeleteUserInput!
+    $condition: ModelUserConditionInput
+  ) {
+    deleteUser(input: $input, condition: $condition) {
+      id
+      username
+      email
+      password
       createdAt
       updatedAt
       __typename

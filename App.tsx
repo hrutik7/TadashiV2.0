@@ -34,10 +34,17 @@ import WaitingScreen from './app/Screens/WaitingMatch/WaitingMatch';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import SignUp from './app/Screens/Signup/SignUp';
+import Confirmation from './app/Screens/Confirmation/Confirmation';
 // import { API, graphqlOperation } from 'aws-amplify';
 // import { createTodo, updateTodo, deleteTodo } from './graphql/mutations';
 import { API } from 'aws-amplify';
 import * as queries from './src/graphql/queries';
+import { Amplify, Auth } from 'aws-amplify';
+// import awsconfig from './aws-exports';
+import awsconfig from './src/aws-exports'
+Amplify.configure(awsconfig);
+
+
 const todo = { name: "My first todo", description: "Hello world!" };
 const Stack = createNativeStackNavigator();
 function App(): JSX.Element {
@@ -56,6 +63,11 @@ function App(): JSX.Element {
           options={{headerShown: false}}
           name="SignUp"
           component={SignUp}
+        />
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="Confirmation"
+          component={Confirmation}
         />
         <Stack.Screen
           options={{headerShown: false}}

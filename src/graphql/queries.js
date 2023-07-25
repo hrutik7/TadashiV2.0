@@ -14,6 +14,54 @@ export const listUserSignup = /* GraphQL */ `
     }
   }
 `;
+export const searchUsers = /* GraphQL */ `
+  query SearchUsers(
+    $filter: SearchableUserFilterInput
+    $sort: [SearchableUserSortInput]
+    $limit: Int
+    $nextToken: String
+    $from: Int
+    $aggregates: [SearchableUserAggregationInput]
+  ) {
+    searchUsers(
+      filter: $filter
+      sort: $sort
+      limit: $limit
+      nextToken: $nextToken
+      from: $from
+      aggregates: $aggregates
+    ) {
+      items {
+        id
+        username
+        email
+        password
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      total
+      aggregateItems {
+        name
+        result {
+          ... on SearchableAggregateScalarResult {
+            value
+          }
+          ... on SearchableAggregateBucketResult {
+            buckets {
+              key
+              doc_count
+              __typename
+            }
+          }
+        }
+        __typename
+      }
+      __typename
+    }
+  }
+`;
 export const getUserSignup = /* GraphQL */ `
   query GetUserSignup($id: ID!) {
     getUserSignup(id: $id) {
@@ -80,42 +128,6 @@ export const listUserLogins = /* GraphQL */ `
     }
   }
 `;
-export const getUserInfo = /* GraphQL */ `
-  query GetUserInfo($id: ID!) {
-    getUserInfo(id: $id) {
-      id
-      username
-      gender
-      describe
-      tags
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const listUserInfos = /* GraphQL */ `
-  query ListUserInfos(
-    $filter: ModelUserInfoFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listUserInfos(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        username
-        gender
-        describe
-        tags
-        createdAt
-        updatedAt
-        __typename
-      }
-      nextToken
-      __typename
-    }
-  }
-`;
 export const getRestaurant = /* GraphQL */ `
   query GetRestaurant($id: ID!) {
     getRestaurant(id: $id) {
@@ -141,6 +153,40 @@ export const listRestaurants = /* GraphQL */ `
         name
         description
         city
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
+export const getUser = /* GraphQL */ `
+  query GetUser($id: ID!) {
+    getUser(id: $id) {
+      id
+      username
+      email
+      password
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const listUsers = /* GraphQL */ `
+  query ListUsers(
+    $filter: ModelUserFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        username
+        email
+        password
         createdAt
         updatedAt
         __typename
