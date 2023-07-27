@@ -82,7 +82,7 @@
     "@aws-amplify/core" "5.7.0"
     "tslib" "^1.8.0"
 
-"@aws-amplify/core@5.7.0":
+"@aws-amplify/core@^5.7.0", "@aws-amplify/core@5.7.0":
   "integrity" "sha512-P8dk4hmxm5XBtKI59XFjiUKUMIlzrgyGapnL3DAfE+twE8JEgRa7XtiffYy4drIXt7+Nl8tYyDhHlUI9/9I3Ow=="
   "resolved" "https://registry.npmjs.org/@aws-amplify/core/-/core-5.7.0.tgz"
   "version" "5.7.0"

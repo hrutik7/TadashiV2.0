@@ -51,7 +51,25 @@ type Post @model {
   content: String
 }
 
+type Crede @model {
+  id: ID!
+  username: String!
+  password: String!
+}
+
+
+type UserInfo @model{
+  id: ID!
+ username: String!
+  email: String!
+}
+
 enum PostStatus {
   ACTIVE
   INACTIVE
+}
+
+type Todo @model {
+  id: ID!
+  task: String!
 }

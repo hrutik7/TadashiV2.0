@@ -27,6 +27,18 @@ type PostMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
+type CredeMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
+type UserInfoMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
+type TodoMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
 type EagerUserSignup = {
   readonly id: string;
   readonly username: string;
@@ -145,4 +157,68 @@ export declare type Post = LazyLoading extends LazyLoadingDisabled ? EagerPost :
 
 export declare const Post: (new (init: ModelInit<Post, PostMetaData>) => Post) & {
   copyOf(source: Post, mutator: (draft: MutableModel<Post, PostMetaData>) => MutableModel<Post, PostMetaData> | void): Post;
+}
+
+type EagerCrede = {
+  readonly id: string;
+  readonly username: string;
+  readonly password: string;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyCrede = {
+  readonly id: string;
+  readonly username: string;
+  readonly password: string;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type Crede = LazyLoading extends LazyLoadingDisabled ? EagerCrede : LazyCrede
+
+export declare const Crede: (new (init: ModelInit<Crede, CredeMetaData>) => Crede) & {
+  copyOf(source: Crede, mutator: (draft: MutableModel<Crede, CredeMetaData>) => MutableModel<Crede, CredeMetaData> | void): Crede;
+}
+
+type EagerUserInfo = {
+  readonly id: string;
+  readonly username: string;
+  readonly email: string;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyUserInfo = {
+  readonly id: string;
+  readonly username: string;
+  readonly email: string;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type UserInfo = LazyLoading extends LazyLoadingDisabled ? EagerUserInfo : LazyUserInfo
+
+export declare const UserInfo: (new (init: ModelInit<UserInfo, UserInfoMetaData>) => UserInfo) & {
+  copyOf(source: UserInfo, mutator: (draft: MutableModel<UserInfo, UserInfoMetaData>) => MutableModel<UserInfo, UserInfoMetaData> | void): UserInfo;
+}
+
+type EagerTodo = {
+  readonly id: string;
+  readonly task: string;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyTodo = {
+  readonly id: string;
+  readonly task: string;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type Todo = LazyLoading extends LazyLoadingDisabled ? EagerTodo : LazyTodo
+
+export declare const Todo: (new (init: ModelInit<Todo, TodoMetaData>) => Todo) & {
+  copyOf(source: Todo, mutator: (draft: MutableModel<Todo, TodoMetaData>) => MutableModel<Todo, TodoMetaData> | void): Todo;
 }
