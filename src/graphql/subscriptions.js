@@ -12,6 +12,9 @@ export const onCreateUserSignup = /* GraphQL */ `
       password
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
   }
@@ -27,6 +30,9 @@ export const onUpdateUserSignup = /* GraphQL */ `
       password
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
   }
@@ -42,6 +48,9 @@ export const onDeleteUserSignup = /* GraphQL */ `
       password
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
   }
@@ -56,6 +65,9 @@ export const onCreateUserLogin = /* GraphQL */ `
       password
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
   }
@@ -70,6 +82,9 @@ export const onUpdateUserLogin = /* GraphQL */ `
       password
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
   }
@@ -84,6 +99,9 @@ export const onDeleteUserLogin = /* GraphQL */ `
       password
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
   }
@@ -99,6 +117,9 @@ export const onCreateRestaurant = /* GraphQL */ `
       city
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
   }
@@ -114,6 +135,9 @@ export const onUpdateRestaurant = /* GraphQL */ `
       city
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
   }
@@ -129,6 +153,9 @@ export const onDeleteRestaurant = /* GraphQL */ `
       city
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
   }
@@ -142,6 +169,9 @@ export const onCreateUser = /* GraphQL */ `
       password
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
   }
@@ -155,6 +185,9 @@ export const onUpdateUser = /* GraphQL */ `
       password
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
   }
@@ -168,6 +201,60 @@ export const onDeleteUser = /* GraphQL */ `
       password
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const onCreatePost = /* GraphQL */ `
+  subscription OnCreatePost($filter: ModelSubscriptionPostFilterInput) {
+    onCreatePost(filter: $filter) {
+      id
+      title
+      status
+      rating
+      content
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const onUpdatePost = /* GraphQL */ `
+  subscription OnUpdatePost($filter: ModelSubscriptionPostFilterInput) {
+    onUpdatePost(filter: $filter) {
+      id
+      title
+      status
+      rating
+      content
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const onDeletePost = /* GraphQL */ `
+  subscription OnDeletePost($filter: ModelSubscriptionPostFilterInput) {
+    onDeletePost(filter: $filter) {
+      id
+      title
+      status
+      rating
+      content
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
   }

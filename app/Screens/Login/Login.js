@@ -16,12 +16,14 @@ const Login = ({navigation}) => {
 
   const signIn = async(username,password) =>{
     console.log(username,password)
+    navigation.navigate('Explain')
     try {
       const user = await Auth.signIn(username, password);
       console.log(user,"user is here....")
     } catch (error) {
       console.log('error signing in', error);
     }
+  
   }
   return (
     <View
@@ -52,7 +54,7 @@ const Login = ({navigation}) => {
       </View>
       <View style={styles.AlreadyContainer}>
        <TouchableOpacity onPress={()=>navigation.navigate("SignUp")}>
-      <Text style={{color: '#6528F7'}}>I need to register</Text>
+      <Text style={{color: '#6528F7'}}>New to Tadashi</Text>
          </TouchableOpacity>
       </View>
       <View style={styles.ButtonContainer}>

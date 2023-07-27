@@ -9,10 +9,17 @@ import { API, graphqlOperation } from 'aws-amplify';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Auth } from 'aws-amplify';
+import { DataStore } from 'aws-amplify';
+import { SQLiteAdapter } from '@aws-amplify/datastore-storage-adapter/SQLiteAdapter';
+import { Post } from '../../../src/models';
+import { PostStatus } from '../../../src/models';
+DataStore.configure({
+  storageAdapter: SQLiteAdapter
+});
 const SignUp = ({ navigation }) => {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [userName, setUsername] = useState('');
+  const [Email, setEmail] = useState('');
+  const [Password, setPassword] = useState('');
   const [login , setLogin] = useState(false)
   const [signupDetails, setsignupDetails] = useState({
     username: '',
@@ -26,22 +33,33 @@ const SignUp = ({ navigation }) => {
   //   password: 'Learn AWS AppSync'
   // };
 const createuser = async (a,b,c) =>{
-  
+  try {
+    console.log("first")
+    const post = await DataStore.save(
+      new Post({
+        title: 'My First Post',
+    rating: 10,
+    status: PostStatus.INACTIVE
+      })
+    );
+    console.log('Post saved successfully!', post);
+  } catch (error) {
+    console.log('Error saving post', error);
+  }
   try {
     const { user } = await Auth.signUp({
-      username,
-      password,
+      username : a,
+      password : c,
       attributes: {
-        email,          // optional
-      //   phone_number,   // optional - E.164 number convention
-      //   // other custom attributes 
+        email : b,          // optional
+        // phone_number,   // optional - E.164 number convention
+        // other custom attributes 
       },
       autoSignIn: { // optional - enables auto sign in after user is confirmed
-        enabled: false,
+        enabled: true,
       }
     });
     console.log(user);
-    navigation.navigate('Confirmation')
   } catch (error) {
     console.log('error signing up:', error);
   }
@@ -73,18 +91,18 @@ const createuser = async (a,b,c) =>{
       <View style={styles.InputContainer}>
         <InputField
           placeholder="Username"
-          value={username}
+          value={userName}
           onChangeText={text => setUsername(text)}
         />
        <InputField
           placeholder="email"
-          value={email}
+          value={Email}
           onChangeText={text => setEmail(text)}
         /> 
 
         <InputField
           placeholder="password"
-          value={password}
+          value={Password}
           onChangeText={text => setPassword(text)}
         />
       </View>
@@ -95,18 +113,18 @@ const createuser = async (a,b,c) =>{
       </View>
       <View style={styles.ButtonContainer}>
         {  
-           email.length > 0 && username.length > 0 && password.length > 0 ? <CustomTouchableOpacity 
+           Email.length > 0 && userName.length > 0 && Password.length > 0 ? <CustomTouchableOpacity 
         style={{backgroundColor: '#6528F7',width:'80%',alignSelf:'center',marginTop:20}}
-        title="SignUp"
+        title="Next"
         onPress={() => {
           
-          createuser(username,email,password)
+          createuser(userName,Email,Password)
         
         } }
         disabled
         /> : <CustomTouchableOpacity 
         style={{backgroundColor: '#D7BBF5',width:'80%',alignSelf:'center',marginTop:20}}
-        title="SignUp"
+        title="Next"
         onPress={() => Alert.alert('Please fill all the fields')}
         
         />}

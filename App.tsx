@@ -42,6 +42,7 @@ import * as queries from './src/graphql/queries';
 import { Amplify, Auth } from 'aws-amplify';
 // import awsconfig from './aws-exports';
 import awsconfig from './src/aws-exports'
+
 Amplify.configure(awsconfig);
 
 
@@ -55,7 +56,8 @@ function App(): JSX.Element {
   }, []);
 
   return (
-    <NavigationContainer>
+ 
+      <NavigationContainer>
       {/* Rest of your app code */}
 
       <Stack.Navigator>
@@ -96,6 +98,7 @@ function App(): JSX.Element {
         />
       </Stack.Navigator>
     </NavigationContainer>
+   
   );
 }
 
