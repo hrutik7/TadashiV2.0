@@ -61,9 +61,11 @@ type Crede @model {
 type UserInfo @model{
   id: ID!
  username: String!
-  email: String!
 }
-
+type ExplainYourself @model{
+  id: ID!
+ explain: String!
+}
 enum PostStatus {
   ACTIVE
   INACTIVE

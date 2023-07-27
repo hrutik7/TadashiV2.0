@@ -5,11 +5,25 @@ import InputField from '../../Components/InputField/InputField';
 import CustomTouchableOpacity from '../../Components/Button/Button';
 import LargeInputBox from '../../Components/LargeInput/LargeInput';
 import {Alert} from 'react-native';
-const Explain = () => {
-  const [Username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [login, setLogin] = useState(false);
+import { ExplainYourself } from '../../../src/models';
+const Explain = ({navigation}) => {
+  const [eyour, setEyour] = useState('');
+  
+
+  const ExplainSave = async (a) =>{
+    try {
+      console.log('first');
+      const post = await ExplainYourself.save(
+        new UserInfo({
+          explain: a
+        }),
+      );
+      console.log('Post saved successfully!', post);
+    } catch (error) {
+      console.log('Error saving post', error);
+    }
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -18,7 +32,9 @@ const Explain = () => {
 
       <View style={styles.ExplainContainer}>
         
-        <LargeInputBox />
+        <LargeInputBox 
+         onChangeText={text => setEyour(text)}
+        />
        
       </View>
 
@@ -31,7 +47,7 @@ const Explain = () => {
                 // marginTop: 20,
                 }}
             title="Next"
-            onPress={() => login ?  console.log('Login') : console.log('Register')}
+            onPress={() => ExplainSave(eyour)}
         />
       </View>
     </View>

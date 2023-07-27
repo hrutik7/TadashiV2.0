@@ -35,6 +35,10 @@ type UserInfoMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
+type ExplainYourselfMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
 type TodoMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
@@ -184,7 +188,6 @@ export declare const Crede: (new (init: ModelInit<Crede, CredeMetaData>) => Cred
 type EagerUserInfo = {
   readonly id: string;
   readonly username: string;
-  readonly email: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -192,7 +195,6 @@ type EagerUserInfo = {
 type LazyUserInfo = {
   readonly id: string;
   readonly username: string;
-  readonly email: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -201,6 +203,26 @@ export declare type UserInfo = LazyLoading extends LazyLoadingDisabled ? EagerUs
 
 export declare const UserInfo: (new (init: ModelInit<UserInfo, UserInfoMetaData>) => UserInfo) & {
   copyOf(source: UserInfo, mutator: (draft: MutableModel<UserInfo, UserInfoMetaData>) => MutableModel<UserInfo, UserInfoMetaData> | void): UserInfo;
+}
+
+type EagerExplainYourself = {
+  readonly id: string;
+  readonly explain: string;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyExplainYourself = {
+  readonly id: string;
+  readonly explain: string;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type ExplainYourself = LazyLoading extends LazyLoadingDisabled ? EagerExplainYourself : LazyExplainYourself
+
+export declare const ExplainYourself: (new (init: ModelInit<ExplainYourself, ExplainYourselfMetaData>) => ExplainYourself) & {
+  copyOf(source: ExplainYourself, mutator: (draft: MutableModel<ExplainYourself, ExplainYourselfMetaData>) => MutableModel<ExplainYourself, ExplainYourselfMetaData> | void): ExplainYourself;
 }
 
 type EagerTodo = {

@@ -12,10 +12,9 @@ import {Auth} from 'aws-amplify';
 import {DataStore} from 'aws-amplify';
 import {SQLiteAdapter} from '@aws-amplify/datastore-storage-adapter/SQLiteAdapter';
 import {Post} from '../../../src/models';
-import {PostStatus} from '../../../src/models';
+
 import {UserInfo} from '../../../src/models';
-import {Crede} from '../../../src/models';
-import {Todo} from '../../../src/models';
+
 DataStore.configure({
   storageAdapter: SQLiteAdapter,
 });
@@ -41,8 +40,7 @@ const SignUp = ({navigation}) => {
       console.log('first');
       const post = await DataStore.save(
         new UserInfo({
-          username: a,
-          email : b
+          username: a
         }),
       );
       console.log('Post saved successfully!', post);

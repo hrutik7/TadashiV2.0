@@ -7,6 +7,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {Alert} from 'react-native';
 import { Auth } from 'aws-amplify';
+import { UserInfo } from '../../../src/models';
+import {DataStore} from 'aws-amplify';
+import {SQLiteAdapter} from '@aws-amplify/datastore-storage-adapter/SQLiteAdapter';
+DataStore.configure({
+  storageAdapter: SQLiteAdapter,
+});
 
 const Login = ({navigation}) => {
   const [username, setUsername] = useState('');
@@ -14,8 +20,23 @@ const Login = ({navigation}) => {
   const [password, setPassword] = useState('');
   const [login , setLogin] = useState(false)
 
+
+  
   const signIn = async(username,password) =>{
+
+    
     console.log(username,password)
+    try {
+      console.log('first');
+      const post = await DataStore.save(
+        new UserInfo({
+          username: username
+        }),
+      );
+      console.log('Post saved successfully!', post);
+    } catch (error) {
+      console.log('Error saving post', error);
+    }
     navigation.navigate('Explain')
     try {
       const user = await Auth.signIn(username, password);

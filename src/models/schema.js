@@ -358,8 +358,44 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "email": {
-                    "name": "email",
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                }
+            },
+            "syncable": true,
+            "pluralName": "UserInfos",
+            "attributes": [
+                {
+                    "type": "model",
+                    "properties": {}
+                }
+            ]
+        },
+        "ExplainYourself": {
+            "name": "ExplainYourself",
+            "fields": {
+                "id": {
+                    "name": "id",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "explain": {
+                    "name": "explain",
                     "isArray": false,
                     "type": "String",
                     "isRequired": true,
@@ -383,7 +419,7 @@ export const schema = {
                 }
             },
             "syncable": true,
-            "pluralName": "UserInfos",
+            "pluralName": "ExplainYourselves",
             "attributes": [
                 {
                     "type": "model",
@@ -446,5 +482,5 @@ export const schema = {
     },
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "c87f321c5017d68ecb11cad8f11ea8ee"
+    "version": "a1757d4527f69941d9c90db4fea2d0a0"
 };
