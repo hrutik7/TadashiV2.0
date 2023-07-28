@@ -286,3 +286,264 @@ export const deletePost = /* GraphQL */ `
     }
   }
 `;
+export const createCrede = /* GraphQL */ `
+  mutation CreateCrede(
+    $input: CreateCredeInput!
+    $condition: ModelCredeConditionInput
+  ) {
+    createCrede(input: $input, condition: $condition) {
+      id
+      username
+      password
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const updateCrede = /* GraphQL */ `
+  mutation UpdateCrede(
+    $input: UpdateCredeInput!
+    $condition: ModelCredeConditionInput
+  ) {
+    updateCrede(input: $input, condition: $condition) {
+      id
+      username
+      password
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const deleteCrede = /* GraphQL */ `
+  mutation DeleteCrede(
+    $input: DeleteCredeInput!
+    $condition: ModelCredeConditionInput
+  ) {
+    deleteCrede(input: $input, condition: $condition) {
+      id
+      username
+      password
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const createUserInfo = /* GraphQL */ `
+  mutation CreateUserInfo(
+    $input: CreateUserInfoInput!
+    $condition: ModelUserInfoConditionInput
+  ) {
+    createUserInfo(input: $input, condition: $condition) {
+      id
+      username
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const updateUserInfo = /* GraphQL */ `
+  mutation UpdateUserInfo(
+    $input: UpdateUserInfoInput!
+    $condition: ModelUserInfoConditionInput
+  ) {
+    updateUserInfo(input: $input, condition: $condition) {
+      id
+      username
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const deleteUserInfo = /* GraphQL */ `
+  mutation DeleteUserInfo(
+    $input: DeleteUserInfoInput!
+    $condition: ModelUserInfoConditionInput
+  ) {
+    deleteUserInfo(input: $input, condition: $condition) {
+      id
+      username
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const createExplainYourself = /* GraphQL */ `
+  mutation CreateExplainYourself(
+    $input: CreateExplainYourselfInput!
+    $condition: ModelExplainYourselfConditionInput
+  ) {
+    createExplainYourself(input: $input, condition: $condition) {
+      id
+      explain
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const updateExplainYourself = /* GraphQL */ `
+  mutation UpdateExplainYourself(
+    $input: UpdateExplainYourselfInput!
+    $condition: ModelExplainYourselfConditionInput
+  ) {
+    updateExplainYourself(input: $input, condition: $condition) {
+      id
+      explain
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const deleteExplainYourself = /* GraphQL */ `
+  mutation DeleteExplainYourself(
+    $input: DeleteExplainYourselfInput!
+    $condition: ModelExplainYourselfConditionInput
+  ) {
+    deleteExplainYourself(input: $input, condition: $condition) {
+      id
+      explain
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const createTodo = /* GraphQL */ `
+  mutation CreateTodo(
+    $input: CreateTodoInput!
+    $condition: ModelTodoConditionInput
+  ) {
+    createTodo(input: $input, condition: $condition) {
+      id
+      task
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const updateTodo = /* GraphQL */ `
+  mutation UpdateTodo(
+    $input: UpdateTodoInput!
+    $condition: ModelTodoConditionInput
+  ) {
+    updateTodo(input: $input, condition: $condition) {
+      id
+      task
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const deleteTodo = /* GraphQL */ `
+  mutation DeleteTodo(
+    $input: DeleteTodoInput!
+    $condition: ModelTodoConditionInput
+  ) {
+    deleteTodo(input: $input, condition: $condition) {
+      id
+      task
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const createUsersData = /* GraphQL */ `
+  mutation CreateUsersData(
+    $input: CreateUsersDataInput!
+    $condition: ModelUsersDataConditionInput
+  ) {
+    createUsersData(input: $input, condition: $condition) {
+      id
+      username
+      tags
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const updateUsersData = /* GraphQL */ `
+  mutation UpdateUsersData(
+    $input: UpdateUsersDataInput!
+    $condition: ModelUsersDataConditionInput
+  ) {
+    updateUsersData(input: $input, condition: $condition) {
+      id
+      username
+      tags
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const deleteUsersData = /* GraphQL */ `
+  mutation DeleteUsersData(
+    $input: DeleteUsersDataInput!
+    $condition: ModelUsersDataConditionInput
+  ) {
+    deleteUsersData(input: $input, condition: $condition) {
+      id
+      username
+      tags
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;

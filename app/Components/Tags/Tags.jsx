@@ -1,11 +1,48 @@
 
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { TextInput, View , Text ,StyleSheet, Touchable, TouchableOpacity} from 'react-native';
 import CustomTouchableOpacity from '../Button/Button';
 import ResponsiveFontSize from 'react-native-responsive-fontsize';
+// import { mutations } from '../../../src/graphql/mutations';
+import mutations from '../../../src/graphql/mutations'
+import { API } from "aws-amplify";
+import { UserInfo } from '../../../src/models';
+import { DataStore } from 'aws-amplify';
+import { SQLiteAdapter } from '@aws-amplify/datastore-storage-adapter/SQLiteAdapter';
+
+DataStore.configure({
+  storageAdapter: SQLiteAdapter
+});
 const Tags = ({navigation}) => {
   const [text, setText] = useState('');
   const [inputarray,setInputarray] = useState([])
+  const [username,setUsername] = useState('')
+  const postUserData = async () => {
+    try {
+      const posts = await DataStore.query(UserInfo);
+      setUsername(posts[0].name)
+      console.log('Posts retrieved successfully!', JSON.stringify(posts, null, 2));
+    } catch (error) {
+      console.log('Error retrieving posts', error);
+    }
+    try {
+      const userData = await API.graphql({
+        query: mutations.createUsersData,
+        variables: {
+          input: {
+            id: "1",
+            name: username,
+            tags: inputarray
+          }
+        }
+      });
+      console.log("userData", userData);
+      changeScreen('WaitingScreen');
+    } catch (err) {
+      console.log("error creating user", err);
+    }
+  };
+
 
   const hadnleRemove = (id) => {
     setInputarray((prevArray) => {
@@ -72,7 +109,8 @@ function changeScreen(screenName) {
       {inputarray.length === 5 ?<CustomTouchableOpacity
         title="Search Partner"
         onPress={() => {
-          changeScreen('WaitingScreen');
+          postUserData()
+      
         }}
         style={{
           marginTop: 30,

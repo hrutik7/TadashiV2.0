@@ -259,3 +259,231 @@ export const onDeletePost = /* GraphQL */ `
     }
   }
 `;
+export const onCreateCrede = /* GraphQL */ `
+  subscription OnCreateCrede($filter: ModelSubscriptionCredeFilterInput) {
+    onCreateCrede(filter: $filter) {
+      id
+      username
+      password
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const onUpdateCrede = /* GraphQL */ `
+  subscription OnUpdateCrede($filter: ModelSubscriptionCredeFilterInput) {
+    onUpdateCrede(filter: $filter) {
+      id
+      username
+      password
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const onDeleteCrede = /* GraphQL */ `
+  subscription OnDeleteCrede($filter: ModelSubscriptionCredeFilterInput) {
+    onDeleteCrede(filter: $filter) {
+      id
+      username
+      password
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const onCreateUserInfo = /* GraphQL */ `
+  subscription OnCreateUserInfo($filter: ModelSubscriptionUserInfoFilterInput) {
+    onCreateUserInfo(filter: $filter) {
+      id
+      username
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const onUpdateUserInfo = /* GraphQL */ `
+  subscription OnUpdateUserInfo($filter: ModelSubscriptionUserInfoFilterInput) {
+    onUpdateUserInfo(filter: $filter) {
+      id
+      username
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const onDeleteUserInfo = /* GraphQL */ `
+  subscription OnDeleteUserInfo($filter: ModelSubscriptionUserInfoFilterInput) {
+    onDeleteUserInfo(filter: $filter) {
+      id
+      username
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const onCreateExplainYourself = /* GraphQL */ `
+  subscription OnCreateExplainYourself(
+    $filter: ModelSubscriptionExplainYourselfFilterInput
+  ) {
+    onCreateExplainYourself(filter: $filter) {
+      id
+      explain
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const onUpdateExplainYourself = /* GraphQL */ `
+  subscription OnUpdateExplainYourself(
+    $filter: ModelSubscriptionExplainYourselfFilterInput
+  ) {
+    onUpdateExplainYourself(filter: $filter) {
+      id
+      explain
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const onDeleteExplainYourself = /* GraphQL */ `
+  subscription OnDeleteExplainYourself(
+    $filter: ModelSubscriptionExplainYourselfFilterInput
+  ) {
+    onDeleteExplainYourself(filter: $filter) {
+      id
+      explain
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const onCreateTodo = /* GraphQL */ `
+  subscription OnCreateTodo($filter: ModelSubscriptionTodoFilterInput) {
+    onCreateTodo(filter: $filter) {
+      id
+      task
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const onUpdateTodo = /* GraphQL */ `
+  subscription OnUpdateTodo($filter: ModelSubscriptionTodoFilterInput) {
+    onUpdateTodo(filter: $filter) {
+      id
+      task
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const onDeleteTodo = /* GraphQL */ `
+  subscription OnDeleteTodo($filter: ModelSubscriptionTodoFilterInput) {
+    onDeleteTodo(filter: $filter) {
+      id
+      task
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const onCreateUsersData = /* GraphQL */ `
+  subscription OnCreateUsersData(
+    $filter: ModelSubscriptionUsersDataFilterInput
+  ) {
+    onCreateUsersData(filter: $filter) {
+      id
+      username
+      tags
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const onUpdateUsersData = /* GraphQL */ `
+  subscription OnUpdateUsersData(
+    $filter: ModelSubscriptionUsersDataFilterInput
+  ) {
+    onUpdateUsersData(filter: $filter) {
+      id
+      username
+      tags
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const onDeleteUsersData = /* GraphQL */ `
+  subscription OnDeleteUsersData(
+    $filter: ModelSubscriptionUsersDataFilterInput
+  ) {
+    onDeleteUsersData(filter: $filter) {
+      id
+      username
+      tags
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;

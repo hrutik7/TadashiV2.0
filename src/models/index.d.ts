@@ -43,6 +43,10 @@ type TodoMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
+type UsersDataMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
 type EagerUserSignup = {
   readonly id: string;
   readonly username: string;
@@ -243,4 +247,26 @@ export declare type Todo = LazyLoading extends LazyLoadingDisabled ? EagerTodo :
 
 export declare const Todo: (new (init: ModelInit<Todo, TodoMetaData>) => Todo) & {
   copyOf(source: Todo, mutator: (draft: MutableModel<Todo, TodoMetaData>) => MutableModel<Todo, TodoMetaData> | void): Todo;
+}
+
+type EagerUsersData = {
+  readonly id: string;
+  readonly username: string;
+  readonly tags?: (string | null)[] | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyUsersData = {
+  readonly id: string;
+  readonly username: string;
+  readonly tags?: (string | null)[] | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type UsersData = LazyLoading extends LazyLoadingDisabled ? EagerUsersData : LazyUsersData
+
+export declare const UsersData: (new (init: ModelInit<UsersData, UsersDataMetaData>) => UsersData) & {
+  copyOf(source: UsersData, mutator: (draft: MutableModel<UsersData, UsersDataMetaData>) => MutableModel<UsersData, UsersDataMetaData> | void): UsersData;
 }

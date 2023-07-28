@@ -428,3 +428,343 @@ export const syncPosts = /* GraphQL */ `
     }
   }
 `;
+export const getCrede = /* GraphQL */ `
+  query GetCrede($id: ID!) {
+    getCrede(id: $id) {
+      id
+      username
+      password
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const listCredes = /* GraphQL */ `
+  query ListCredes(
+    $filter: ModelCredeFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listCredes(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        username
+        password
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      nextToken
+      startedAt
+      __typename
+    }
+  }
+`;
+export const syncCredes = /* GraphQL */ `
+  query SyncCredes(
+    $filter: ModelCredeFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncCredes(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        username
+        password
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      nextToken
+      startedAt
+      __typename
+    }
+  }
+`;
+export const getUserInfo = /* GraphQL */ `
+  query GetUserInfo($id: ID!) {
+    getUserInfo(id: $id) {
+      id
+      username
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const listUserInfos = /* GraphQL */ `
+  query ListUserInfos(
+    $filter: ModelUserInfoFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listUserInfos(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        username
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      nextToken
+      startedAt
+      __typename
+    }
+  }
+`;
+export const syncUserInfos = /* GraphQL */ `
+  query SyncUserInfos(
+    $filter: ModelUserInfoFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncUserInfos(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        username
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      nextToken
+      startedAt
+      __typename
+    }
+  }
+`;
+export const getExplainYourself = /* GraphQL */ `
+  query GetExplainYourself($id: ID!) {
+    getExplainYourself(id: $id) {
+      id
+      explain
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const listExplainYourselves = /* GraphQL */ `
+  query ListExplainYourselves(
+    $filter: ModelExplainYourselfFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listExplainYourselves(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        explain
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      nextToken
+      startedAt
+      __typename
+    }
+  }
+`;
+export const syncExplainYourselves = /* GraphQL */ `
+  query SyncExplainYourselves(
+    $filter: ModelExplainYourselfFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncExplainYourselves(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        explain
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      nextToken
+      startedAt
+      __typename
+    }
+  }
+`;
+export const getTodo = /* GraphQL */ `
+  query GetTodo($id: ID!) {
+    getTodo(id: $id) {
+      id
+      task
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const listTodos = /* GraphQL */ `
+  query ListTodos(
+    $filter: ModelTodoFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listTodos(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        task
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      nextToken
+      startedAt
+      __typename
+    }
+  }
+`;
+export const syncTodos = /* GraphQL */ `
+  query SyncTodos(
+    $filter: ModelTodoFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncTodos(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        task
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      nextToken
+      startedAt
+      __typename
+    }
+  }
+`;
+export const getUsersData = /* GraphQL */ `
+  query GetUsersData($id: ID!) {
+    getUsersData(id: $id) {
+      id
+      username
+      tags
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const listUsersData = /* GraphQL */ `
+  query ListUsersData(
+    $filter: ModelUsersDataFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listUsersData(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        username
+        tags
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      nextToken
+      startedAt
+      __typename
+    }
+  }
+`;
+export const syncUsersData = /* GraphQL */ `
+  query SyncUsersData(
+    $filter: ModelUsersDataFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncUsersData(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        username
+        tags
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      nextToken
+      startedAt
+      __typename
+    }
+  }
+`;

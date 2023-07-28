@@ -1,10 +1,19 @@
 import { getAutoHeightDuration } from '@mui/material/styles/createTransitions';
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import {View, StyleSheet, Image,Text, TouchableOpacity} from 'react-native';
 import { SvgUri } from 'react-native-svg';
 import CustomTouchableOpacity from '../../Components/Button/Button';
+import * as queries from '../../../src/graphql/queries'
+import { API } from 'aws-amplify';
 const WaitingScreen = ({navigation}) => {
-  
+  useEffect(()=>{
+    fetchApi()
+  },[])
+
+  const fetchApi = async () =>{
+    const allTodos = await API.graphql({ query: queries.listUsersData });
+    console.log(allTodos.data,"con")
+  }
   return (
     <View style={styles.container}>
         <View style={styles.header}>

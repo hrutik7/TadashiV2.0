@@ -75,3 +75,10 @@ type Todo @model {
   id: ID!
   task: String!
 }
+
+
+type UsersData @model {
+  id: ID!
+  username : String!
+  tags: [String]
+}

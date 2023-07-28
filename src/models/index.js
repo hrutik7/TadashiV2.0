@@ -7,7 +7,7 @@ const PostStatus = {
   "INACTIVE": "INACTIVE"
 };
 
-const { UserSignup, UserLogin, Restaurant, User, Post, Crede, UserInfo, ExplainYourself, Todo } = initSchema(schema);
+const { UserSignup, UserLogin, Restaurant, User, Post, Crede, UserInfo, ExplainYourself, Todo, UsersData } = initSchema(schema);
 
 export {
   UserSignup,
@@ -19,5 +19,6 @@ export {
   UserInfo,
   ExplainYourself,
   Todo,
+  UsersData,
   PostStatus
 };
