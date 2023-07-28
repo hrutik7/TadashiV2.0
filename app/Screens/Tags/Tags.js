@@ -5,7 +5,7 @@ import InputField from '../../Components/InputField/InputField';
 import CustomTouchableOpacity from '../../Components/Button/Button';
 import Tags from '../../Components/Tags/Tags';
 import {Alert} from 'react-native';
-const TagsScreen = () => {
+const TagsScreen = ({navigation}) => {
   
   return (
     <View

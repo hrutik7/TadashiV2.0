@@ -1,24 +1,31 @@
 import React, {useState} from 'react';
-import {View, StyleSheet, Image, Text, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, Image, Text, TouchableOpacity,TextInput} from 'react-native';
 // import InputField from '../../components/InputField';
 import InputField from '../../Components/InputField/InputField';
 import CustomTouchableOpacity from '../../Components/Button/Button';
 import LargeInputBox from '../../Components/LargeInput/LargeInput';
 import {Alert} from 'react-native';
 import { ExplainYourself } from '../../../src/models';
+import {DataStore} from 'aws-amplify';
+import {SQLiteAdapter} from '@aws-amplify/datastore-storage-adapter/SQLiteAdapter';
+DataStore.configure({
+  storageAdapter: SQLiteAdapter,
+});
 const Explain = ({navigation}) => {
   const [eyour, setEyour] = useState('');
   
 
   const ExplainSave = async (a) =>{
+    console.log(a,eyour,"test")
     try {
       console.log('first');
-      const post = await ExplainYourself.save(
-        new UserInfo({
+      const post = await DataStore.save(
+        new ExplainYourself({
           explain: a
         }),
       );
       console.log('Post saved successfully!', post);
+      navigation.navigate('TagsScreen')
     } catch (error) {
       console.log('Error saving post', error);
     }
@@ -31,10 +38,38 @@ const Explain = ({navigation}) => {
       </View>
 
       <View style={styles.ExplainContainer}>
+      {/* <InputField
+          placeholder="Username"
+          value={eyour}
+          style={{width:"100%"}}
+          onChangeText={text => {
+            console.log(text,"on change text")
+            setEyour(text)}}
+        /> */}
+        <TextInput
+        multiline
+        numberOfLines={4} // Adjust the number of lines as needed
+        placeholder="Describe Here..."
+        value={eyour}
+          onChangeText={text => {
+            console.log(text,"on change text")
+            setEyour(text)}}
         
-        <LargeInputBox 
-         onChangeText={text => setEyour(text)}
-        />
+        style={{
+          height: "50%", // Adjust the height as needed
+          borderWidth: 1,
+          borderColor: '#ccc',
+          padding: 10,
+          width: '75%',
+        }}
+      />
+        {/* <LargeInputBox 
+         placeholder="Username"
+          value={eyour}
+          onChangeText={text => {
+            console.log(text,"on change text")
+            setEyour(text)}}
+        /> */}
        
       </View>
 
@@ -87,7 +122,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    width: '100%',
+    width: '120%',
   },
   nextContainer:{
     flex: 1,

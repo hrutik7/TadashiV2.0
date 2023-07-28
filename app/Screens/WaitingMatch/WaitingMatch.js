@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import {View, StyleSheet, Image,Text, TouchableOpacity} from 'react-native';
 import { SvgUri } from 'react-native-svg';
 import CustomTouchableOpacity from '../../Components/Button/Button';
-const WaitingScreen = () => {
+const WaitingScreen = ({navigation}) => {
   
   return (
     <View style={styles.container}>

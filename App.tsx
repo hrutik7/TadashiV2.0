@@ -35,6 +35,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import SignUp from './app/Screens/Signup/SignUp';
 import Confirmation from './app/Screens/Confirmation/Confirmation';
+import Tags from './app/Components/Tags/Tags';
 // import { API, graphqlOperation } from 'aws-amplify';
 // import { createTodo, updateTodo, deleteTodo } from './graphql/mutations';
 import { API } from 'aws-amplify';
@@ -94,7 +95,12 @@ function App(): JSX.Element {
         <Stack.Screen
           options={{headerShown: false}}
           name="TagsScreen"
-          component={TagsScreen}
+          component={Tags}
+        />
+         <Stack.Screen
+          options={{headerShown: false}}
+          name="WaitingScreen"
+          component={WaitingScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>

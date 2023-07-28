@@ -3,14 +3,25 @@ import React, { useState } from 'react';
 import { TextInput, View , Text ,StyleSheet, Touchable, TouchableOpacity} from 'react-native';
 import CustomTouchableOpacity from '../Button/Button';
 import ResponsiveFontSize from 'react-native-responsive-fontsize';
-const Tags = () => {
+const Tags = ({navigation}) => {
   const [text, setText] = useState('');
   const [inputarray,setInputarray] = useState([])
 
+  const hadnleRemove = (id) => {
+    setInputarray((prevArray) => {
+      return prevArray.filter((item) => item.id !== id);
+    });
+  };
+function changeScreen(screenName) {
+  navigation.navigate(screenName);
+}
   const handlePress = () => {
     if (text.trim() !== '') {
-      setInputarray((prevArray) => [...prevArray, text]); // Append the input value to the array
-      
+      // setInputarray((prevArray) => [...prevArray, text]); // Append the input value to the array
+      setInputarray((prevArray) => [...prevArray, {
+        id: Math.random().toString(),
+        value: text
+      }]);
       setText(''); // Clear the input field after submitting
     }
   };
@@ -45,11 +56,11 @@ const Tags = () => {
               inputarray.map((item,index)=>{
                   return(
                       // <Text key={index}>{item}</Text>
-                      <View key={index} style={{flex:1,flexDirection:"row"}}>
+                      <View key={index.key} style={{flex:1,flexDirection:"row"}}>
                       <TouchableOpacity onPress={()=>{
-                setInputarray(inputarray.splice(index,1)) 
+                hadnleRemove(item.id)
                       }} style={{flex:1,flexDirection:"row"}}>
-                      <Text style={styles.tagtext}>{item}</Text>
+                      <Text style={styles.tagtext}>{item.value}</Text>
                       </TouchableOpacity>
                       </View>
                   )
@@ -58,10 +69,10 @@ const Tags = () => {
           }
       </View>
       <View style={styles.btncontainer}>
-      <CustomTouchableOpacity
-        title="Submit"
+      {inputarray.length === 5 ?<CustomTouchableOpacity
+        title="Search Partner"
         onPress={() => {
-          handlePress(); 
+          changeScreen('WaitingScreen');
         }}
         style={{
           marginTop: 30,
@@ -70,7 +81,19 @@ const Tags = () => {
           borderRadius: 10,
           padding: 10,
         }}
-      />
+      />:<CustomTouchableOpacity
+      title="Submit"
+      onPress={() => {
+        handlePress(); 
+      }}
+      style={{
+        marginTop: 30,
+        width: '95%',
+        backgroundColor: '#6528F7',
+        borderRadius: 10,
+        padding: 10,
+      }}
+    /> }
       </View>
 
       
@@ -84,6 +107,8 @@ const styles = StyleSheet.create({
       paddingTop: 40,
       alignItems: 'center',
       textAlign: 'center',
+      backgroundColor: '#EDE4FF',
+      
     },
     header:{
       // flex:1,

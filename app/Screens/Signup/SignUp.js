@@ -93,7 +93,9 @@ const SignUp = ({navigation}) => {
         <InputField
           placeholder="Username"
           value={userName}
-          onChangeText={text => setUsername(text)}
+          onChangeText={text => {
+            console.log(text,"on change text")
+            setUsername(text)}}
         />
         <InputField
           placeholder="email"
