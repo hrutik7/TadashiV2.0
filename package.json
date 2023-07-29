@@ -8,6 +8,7 @@
         "lint": "eslint .",
         "start": "react-native start",
         "test": "jest",
+        "format": "prettier --write 'app/*.js'",
         "gradclean": "cd android && gradlew clean && cd ..",
         "amplify-modelgen": "node amplify\\scripts\\amplify-modelgen.js",
         "amplify-push": "node amplify\\scripts\\amplify-push.js"
@@ -22,6 +23,7 @@
         "@react-navigation/native-stack": "^6.9.13",
         "@reduxjs/toolkit": "^1.9.5",
         "amazon-cognito-identity-js": "^6.3.1",
+        "prettier": "^2.1.1",
         "aws-amplify": "^5.3.5",
         "core-js": "^3.31.1",
         "react": "18.2.0",
