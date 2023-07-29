@@ -28,6 +28,20 @@ const Login = ({navigation}) => {
     console.log(username,password)
     try {
       console.log('first');
+      // {"cause": {"locations": null, 
+      // "message": "Cannot return null for non-nullable type:
+      //  'AWSTimestamp' within parent 'Restaurant' (/syncRestaurants/items[2]/_lastChangedAt)",
+      //   "path": ["syncRestaurants", "items", 2, "_lastChangedAt"]}, "errorType": "BadRecord", "localModel": null,
+      //    "message": "Cannot return null for non-nullable 
+      //    type: 'AWSTimestamp' within parent 
+      //    'Restaurant' (/syncRestaurants/items[2]/_lastChangedAt)", 
+      //    "model": "Restaurant", "oper
+      //    ation": "syncRest
+      //    aurants", "process": "sync", "recoverySu
+      //    ggestion": "Ensure app code is up to date, auth directiv
+      //    es exist and are correct on each model, and that server-side data has not been invalidated by a schema change. 
+      //    If the problem persists
+      // , search for or create an issue: https://github.com/aws-amplify/amplify-js/issues", "remoteModel": null}
       const post = await DataStore.save(
         new UserInfo({
           username: username

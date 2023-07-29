@@ -4,7 +4,7 @@ import {View, StyleSheet, Image,Text, TouchableOpacity} from 'react-native';
 import { SvgUri } from 'react-native-svg';
 import CustomTouchableOpacity from '../../Components/Button/Button';
 import * as queries from '../../../src/graphql/queries'
-import { API } from 'aws-amplify';
+import { API, DataStore } from 'aws-amplify';
 const WaitingScreen = ({navigation}) => {
   useEffect(()=>{
     fetchApi()
@@ -13,6 +13,11 @@ const WaitingScreen = ({navigation}) => {
   const fetchApi = async () =>{
     const allTodos = await API.graphql({ query: queries.listUsersData });
     console.log(allTodos.data,"con")
+  }
+
+  const signOut = async () =>{
+    await DataStore.clear()
+    navigation.navigate("SignUp")
   }
   return (
     <View style={styles.container}>
@@ -33,15 +38,25 @@ const WaitingScreen = ({navigation}) => {
                 <CustomTouchableOpacity
                     style={{
                         backgroundColor: '#6528F7',
-                        width: '80%',
+                        width: '40%',
                         alignSelf: 'center',
                         // marginTop: 20,
                         }}
-                    title="change preferences"
-                    onPress={() => console.log('Login')}
+                    title="update tags"
+                    onPress={() => navigation.navigate("TagsScreen")}
                 />
 
-
+<CustomTouchableOpacity
+                    style={{
+                        backgroundColor: '#8d7d37',
+                        width: '40%',
+                        alignSelf: 'center',
+                        // marginTop: 20,
+                        color:"black"
+                        }}
+                    title="Logout"
+                    onPress={() => signOut()}
+                />
         </View>
     </View>
   );
@@ -63,8 +78,10 @@ const styles = StyleSheet.create({
     flex:1
   },
   btnContainer:{
-flex:2,
+flex:1,
+flexDirection:"row",
 width:"100%",
+justifyContent:"space-around"
   },
   ImageContainer:{
     flex:3

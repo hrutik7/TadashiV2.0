@@ -4,7 +4,7 @@ import { TextInput, View , Text ,StyleSheet, Touchable, TouchableOpacity} from '
 import CustomTouchableOpacity from '../Button/Button';
 import ResponsiveFontSize from 'react-native-responsive-fontsize';
 // import { mutations } from '../../../src/graphql/mutations';
-import mutations from '../../../src/graphql/mutations'
+import * as mutations from '../../../src/graphql/mutations';
 import { API } from "aws-amplify";
 import { UserInfo } from '../../../src/models';
 import { DataStore } from 'aws-amplify';
@@ -20,19 +20,22 @@ const Tags = ({navigation}) => {
   const postUserData = async () => {
     try {
       const posts = await DataStore.query(UserInfo);
-      setUsername(posts[0].name)
-      console.log('Posts retrieved successfully!', JSON.stringify(posts, null, 2));
+      setUsername(posts[0].username)
+      console.log('Posts retrieved successfully!', posts);
     } catch (error) {
       console.log('Error retrieving posts', error);
     }
     try {
+      // console.log(inputarray,username,"====================")
+
+      const inputstring = JSON.stringify(inputarray)
+      console.log(inputstring,"string==============================")
       const userData = await API.graphql({
         query: mutations.createUsersData,
         variables: {
           input: {
-            id: "1",
-            name: username,
-            tags: inputarray
+            username: username,
+            tags: inputstring
           }
         }
       });
@@ -41,6 +44,7 @@ const Tags = ({navigation}) => {
     } catch (err) {
       console.log("error creating user", err);
     }
+    changeScreen('WaitingScreen');
   };
 
 
