@@ -7,6 +7,7 @@ import ResponsiveFontSize from 'react-native-responsive-fontsize';
 import * as mutations from '../../../src/graphql/mutations';
 import { API } from "aws-amplify";
 import { UserInfo } from '../../../src/models';
+import { GenderInfo } from '../../../src/models';
 import { DataStore } from 'aws-amplify';
 import { SQLiteAdapter } from '@aws-amplify/datastore-storage-adapter/SQLiteAdapter';
 
@@ -17,11 +18,14 @@ const Tags = ({navigation}) => {
   const [text, setText] = useState('');
   const [inputarray,setInputarray] = useState([])
   const [username,setUsername] = useState('')
+  const [gender,setGender] = useState('')
   const postUserData = async () => {
     try {
       const posts = await DataStore.query(UserInfo);
+      const genderinfo = await DataStore.query(GenderInfo);
       setUsername(posts[0].username)
-      console.log('Posts retrieved successfully!', posts);
+      
+      setGender(genderinfo[0].gender)
     } catch (error) {
       console.log('Error retrieving posts', error);
     }
@@ -29,13 +33,14 @@ const Tags = ({navigation}) => {
       // console.log(inputarray,username,"====================")
 
       const inputstring = JSON.stringify(inputarray)
-      console.log(inputstring,"string==============================")
+      console.log(inputstring,"this isinputokkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk")
       const userData = await API.graphql({
         query: mutations.createUsersData,
         variables: {
           input: {
             username: username,
-            tags: inputstring
+            tags: inputarray,
+            gender:gender
           }
         }
       });

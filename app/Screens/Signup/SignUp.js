@@ -44,6 +44,7 @@ const SignUp = ({navigation}) => {
         }),
       );
       console.log('Post saved successfully!', post);
+      
     } catch (error) {
       console.log('Error saving post', error);
     }

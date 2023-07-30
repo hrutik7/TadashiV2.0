@@ -563,6 +563,72 @@ export const syncUserInfos = /* GraphQL */ `
     }
   }
 `;
+export const getGenderInfo = /* GraphQL */ `
+  query GetGenderInfo($id: ID!) {
+    getGenderInfo(id: $id) {
+      id
+      gender
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const listGenderInfos = /* GraphQL */ `
+  query ListGenderInfos(
+    $filter: ModelGenderInfoFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listGenderInfos(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        gender
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      nextToken
+      startedAt
+      __typename
+    }
+  }
+`;
+export const syncGenderInfos = /* GraphQL */ `
+  query SyncGenderInfos(
+    $filter: ModelGenderInfoFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncGenderInfos(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        gender
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      nextToken
+      startedAt
+      __typename
+    }
+  }
+`;
 export const getExplainYourself = /* GraphQL */ `
   query GetExplainYourself($id: ID!) {
     getExplainYourself(id: $id) {
@@ -705,6 +771,7 @@ export const getUsersData = /* GraphQL */ `
       id
       username
       tags
+      gender
       createdAt
       updatedAt
       _version
@@ -725,6 +792,7 @@ export const listUsersData = /* GraphQL */ `
         id
         username
         tags
+        gender
         createdAt
         updatedAt
         _version
@@ -755,6 +823,7 @@ export const syncUsersData = /* GraphQL */ `
         id
         username
         tags
+        gender
         createdAt
         updatedAt
         _version

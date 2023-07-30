@@ -18,7 +18,7 @@ const Confirmation = ({navigation}) => {
     try {
       const user = await Auth.confirmSignUp(username, code);
       console.log(user,"user is here....")
-      navigation.navigate("Login")
+      navigation.navigate("Gender")
     } catch (error) {
       Alert.alert(error)
       console.log('error signing in', error);

@@ -391,6 +391,57 @@ export const deleteUserInfo = /* GraphQL */ `
     }
   }
 `;
+export const createGenderInfo = /* GraphQL */ `
+  mutation CreateGenderInfo(
+    $input: CreateGenderInfoInput!
+    $condition: ModelGenderInfoConditionInput
+  ) {
+    createGenderInfo(input: $input, condition: $condition) {
+      id
+      gender
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const updateGenderInfo = /* GraphQL */ `
+  mutation UpdateGenderInfo(
+    $input: UpdateGenderInfoInput!
+    $condition: ModelGenderInfoConditionInput
+  ) {
+    updateGenderInfo(input: $input, condition: $condition) {
+      id
+      gender
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const deleteGenderInfo = /* GraphQL */ `
+  mutation DeleteGenderInfo(
+    $input: DeleteGenderInfoInput!
+    $condition: ModelGenderInfoConditionInput
+  ) {
+    deleteGenderInfo(input: $input, condition: $condition) {
+      id
+      gender
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
 export const createExplainYourself = /* GraphQL */ `
   mutation CreateExplainYourself(
     $input: CreateExplainYourselfInput!
@@ -502,6 +553,7 @@ export const createUsersData = /* GraphQL */ `
       id
       username
       tags
+      gender
       createdAt
       updatedAt
       _version
@@ -520,6 +572,7 @@ export const updateUsersData = /* GraphQL */ `
       id
       username
       tags
+      gender
       createdAt
       updatedAt
       _version
@@ -538,6 +591,7 @@ export const deleteUsersData = /* GraphQL */ `
       id
       username
       tags
+      gender
       createdAt
       updatedAt
       _version

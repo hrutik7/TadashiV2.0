@@ -1,15 +1,29 @@
 import React, {useState} from 'react';
 import {View, StyleSheet, Image, Text, TouchableOpacity} from 'react-native';
-// import InputField from '../../components/InputField';
-import InputField from '../../Components/InputField/InputField';
-import CustomTouchableOpacity from '../../Components/Button/Button';
+import {DataStore} from 'aws-amplify';
+import {SQLiteAdapter} from '@aws-amplify/datastore-storage-adapter/SQLiteAdapter';
+import { UserInfo } from '../../../src/models';
+import { GenderInfo } from '../../../src/models';
+DataStore.configure({
+  storageAdapter: SQLiteAdapter,
+});
 
-import {Alert} from 'react-native';
-const Gender = () => {
-  const [Username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [login, setLogin] = useState(false);
+const Gender = ({navigation}) => {
+  
+
+  const saveGender = async(gender) =>{
+    try {
+      const post = await DataStore.save(
+        new GenderInfo({
+          gender: gender
+        }),
+      );
+      console.log('gender saved successfully!', post);
+      navigation.navigate("Explain")
+    } catch (error) {
+      console.log(error,"err hain")
+    }
+  }
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -19,7 +33,7 @@ const Gender = () => {
       <View style={styles.GenderContainer}>
         <TouchableOpacity
           style={{height:220}}
-          onPress={() => setLogin(true)}>
+          onPress={() => saveGender("male")}>
           <Image
             style={{width: 150, height: 150}}
             source={require('../../Assets/male.png')}
@@ -29,7 +43,7 @@ const Gender = () => {
 
         <TouchableOpacity
           
-          onPress={() => setLogin(true)}>
+          onPress={() => saveGender("female")}>
           <Image
             style={{width: 150, height: 150}}
             source={require('../../Assets/female.png')}

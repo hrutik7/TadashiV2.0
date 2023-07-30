@@ -35,6 +35,10 @@ type UserInfoMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
+type GenderInfoMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
 type ExplainYourselfMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
@@ -211,6 +215,26 @@ export declare const UserInfo: (new (init: ModelInit<UserInfo, UserInfoMetaData>
   copyOf(source: UserInfo, mutator: (draft: MutableModel<UserInfo, UserInfoMetaData>) => MutableModel<UserInfo, UserInfoMetaData> | void): UserInfo;
 }
 
+type EagerGenderInfo = {
+  readonly id: string;
+  readonly gender: string;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyGenderInfo = {
+  readonly id: string;
+  readonly gender: string;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type GenderInfo = LazyLoading extends LazyLoadingDisabled ? EagerGenderInfo : LazyGenderInfo
+
+export declare const GenderInfo: (new (init: ModelInit<GenderInfo, GenderInfoMetaData>) => GenderInfo) & {
+  copyOf(source: GenderInfo, mutator: (draft: MutableModel<GenderInfo, GenderInfoMetaData>) => MutableModel<GenderInfo, GenderInfoMetaData> | void): GenderInfo;
+}
+
 type EagerExplainYourself = {
   readonly id: string;
   readonly explain: string;
@@ -255,6 +279,7 @@ type EagerUsersData = {
   readonly id: string;
   readonly username: string;
   readonly tags?: (string | null)[] | null;
+  readonly gender: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -263,6 +288,7 @@ type LazyUsersData = {
   readonly id: string;
   readonly username: string;
   readonly tags?: (string | null)[] | null;
+  readonly gender: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

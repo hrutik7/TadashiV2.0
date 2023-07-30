@@ -5,14 +5,69 @@ import { SvgUri } from 'react-native-svg';
 import CustomTouchableOpacity from '../../Components/Button/Button';
 import * as queries from '../../../src/graphql/queries'
 import { API, DataStore } from 'aws-amplify';
+import awsconfig from '../../../src/aws-exports'
+import { Auth } from 'aws-amplify';
+import { listUserInfos } from '../../../src/graphql/queries';
+import { listUsersData } from '../../../src/graphql/queries';
 const WaitingScreen = ({navigation}) => {
+  const [users,setUsers] = useState()
+  const [NextToken,setNextToken] = useState()
   useEffect(()=>{
-    fetchApi()
+    fetchApi(10)
   },[])
+ 
+  const fetchApi = async (limit) =>{
+  //   let apiName = 'listUserInfos';
+  // let path = '/listUsersInGroup';
+  // let myInit = { 
+  //     queryStringParameters: {
+        
+  //       "limit": limit,
+  //       "token": nextToken
+  //     },
+  //     headers: {
+  //       'Content-Type' : 'application/json',
+  //       Authorization: `${(await Auth.currentSession()).getAccessToken().getJwtToken()}`
+  //     }
+  // }
+  // const { NextToken, ...rest } =  await API.get(apiName, path, myInit);
+  // nextToken = NextToken;
+  // console.log(rest,"rest")
+  // return rest;
 
-  const fetchApi = async () =>{
-    const allTodos = await API.graphql({ query: queries.listUsersData });
-    console.log(allTodos.data,"con")
+
+  try {
+    let nextToken = await Auth.currentSession()
+    // let nextToken = await Auth.currentSession().getAccessToken().getJwtToken()
+
+
+    let nextjwt = nextToken.accessToken.jwtToken
+    console.log(nextjwt,"==========================================")
+    const { data , errors} = await API.graphql({
+      query: listUsersData,
+      variables: {
+        filter : null,
+        limit: 10, // Set the desired limit for each query
+        token: nextjwt, // Use the nextToken to paginate
+      },
+    });
+    if (errors) {
+      console.error('GraphQL errors:', errors);
+      return;
+    }
+    const newUsers = data.listUserInfos.items;
+    const newNextToken = data.listUserInfos.nextToken;
+console.log(data.listUserInfos.items,"here is data")
+    setUsers((prevUsers) => [...prevUsers, ...newUsers]);
+    setNextToken(nextjwt);
+  } catch (error) {
+    console.error('Error fetching user information:', error.data.listUsersData.items);
+  }
+
+
+
+
+
   }
 
   const signOut = async () =>{

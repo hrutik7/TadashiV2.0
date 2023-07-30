@@ -346,6 +346,54 @@ export const onDeleteUserInfo = /* GraphQL */ `
     }
   }
 `;
+export const onCreateGenderInfo = /* GraphQL */ `
+  subscription OnCreateGenderInfo(
+    $filter: ModelSubscriptionGenderInfoFilterInput
+  ) {
+    onCreateGenderInfo(filter: $filter) {
+      id
+      gender
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const onUpdateGenderInfo = /* GraphQL */ `
+  subscription OnUpdateGenderInfo(
+    $filter: ModelSubscriptionGenderInfoFilterInput
+  ) {
+    onUpdateGenderInfo(filter: $filter) {
+      id
+      gender
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const onDeleteGenderInfo = /* GraphQL */ `
+  subscription OnDeleteGenderInfo(
+    $filter: ModelSubscriptionGenderInfoFilterInput
+  ) {
+    onDeleteGenderInfo(filter: $filter) {
+      id
+      gender
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
 export const onCreateExplainYourself = /* GraphQL */ `
   subscription OnCreateExplainYourself(
     $filter: ModelSubscriptionExplainYourselfFilterInput
@@ -444,6 +492,7 @@ export const onCreateUsersData = /* GraphQL */ `
       id
       username
       tags
+      gender
       createdAt
       updatedAt
       _version
@@ -461,6 +510,7 @@ export const onUpdateUsersData = /* GraphQL */ `
       id
       username
       tags
+      gender
       createdAt
       updatedAt
       _version
@@ -478,6 +528,7 @@ export const onDeleteUsersData = /* GraphQL */ `
       id
       username
       tags
+      gender
       createdAt
       updatedAt
       _version
