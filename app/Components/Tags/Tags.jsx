@@ -10,7 +10,7 @@ import { UserInfo } from '../../../src/models';
 import { GenderInfo } from '../../../src/models';
 import { DataStore } from 'aws-amplify';
 import { SQLiteAdapter } from '@aws-amplify/datastore-storage-adapter/SQLiteAdapter';
-
+import { deleteUsersData } from '../../../src/graphql/mutations';
 DataStore.configure({
   storageAdapter: SQLiteAdapter
 });
@@ -19,6 +19,25 @@ const Tags = ({navigation}) => {
   const [inputarray,setInputarray] = useState([])
   const [username,setUsername] = useState('')
   const [gender,setGender] = useState('')
+
+
+  // const deleteEntry = async () =>{
+  //   try {
+  //     const todoDetails = {
+  //       id: '7a4f3b79-fcc0-4dcb-9f48-e01260b8ff82',
+  //     };
+      
+  //     const deletedTodo = await API.graphql({ 
+  //       query: deleteUsersData, 
+  //       variables: { input: todoDetails }
+  //     });
+  //     console.log(deletedTodo)
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
+
+
   const postUserData = async () => {
     try {
       const posts = await DataStore.query(UserInfo);
@@ -131,7 +150,8 @@ function changeScreen(screenName) {
       />:<CustomTouchableOpacity
       title="Submit"
       onPress={() => {
-        handlePress(); 
+        // handlePress(); 
+        deleteEntry()
       }}
       style={{
         marginTop: 30,
