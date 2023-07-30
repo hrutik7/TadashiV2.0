@@ -46,6 +46,8 @@ import { Amplify, Auth } from 'aws-amplify';
 import awsconfig from './src/aws-exports'
 import ChatScreen from './app/Screens/Messege/Message';
 import SocketIOClient from 'socket.io-client';
+import Chat from './app/Screens/Chat/Chat';
+import Message from './app/Screens/Messege/Message';
 Amplify.configure(awsconfig);
 
 
@@ -111,6 +113,16 @@ function App(): JSX.Element {
           options={{headerShown: false}}
           name="ChatScreen"
           component={ChatScreen}
+        />
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="Chat"
+          component={Chat}
+        />
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="Message"
+          component={Message}
         />
       </Stack.Navigator>
     </NavigationContainer>

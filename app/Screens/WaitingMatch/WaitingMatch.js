@@ -96,7 +96,7 @@ console.log(data.listUserInfos.items,"here is data")
                         }}
                     title="update tags"
                     onPress={() =>{ 
-                      navigation.navigate("ChatScreen")
+                      navigation.navigate("Chat")
                       // navigation.navigate("TagsScreen")
                     }}
                 />
