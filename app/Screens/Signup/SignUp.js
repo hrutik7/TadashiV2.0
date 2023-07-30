@@ -35,7 +35,7 @@ const SignUp = ({navigation}) => {
   //   password: 'Learn AWS AppSync'
   // };
   const createuser = async (a, b, c) => {
-    console.log(Todo,Crede,UserInfo,"=>>>>>>>>>>>>>>>")
+    // console.log(Todo,Crede,UserInfo,"=>>>>>>>>>>>>>>>")
     try {
       console.log('first');
       const post = await DataStore.save(
@@ -62,6 +62,7 @@ const SignUp = ({navigation}) => {
         },
       });
       console.log(user);
+      navigation.navigate('Confirmation')
     } catch (error) {
       console.log('error signing up:', error);
     }

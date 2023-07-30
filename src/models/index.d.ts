@@ -47,6 +47,8 @@ type UsersDataMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
+
+
 type EagerUserSignup = {
   readonly id: string;
   readonly username: string;
@@ -269,4 +271,24 @@ export declare type UsersData = LazyLoading extends LazyLoadingDisabled ? EagerU
 
 export declare const UsersData: (new (init: ModelInit<UsersData, UsersDataMetaData>) => UsersData) & {
   copyOf(source: UsersData, mutator: (draft: MutableModel<UsersData, UsersDataMetaData>) => MutableModel<UsersData, UsersDataMetaData> | void): UsersData;
+}
+
+type EagerMessage = {
+  readonly id: string;
+  readonly content: string;
+  readonly createdAt: string;
+  readonly updatedAt: string;
+}
+
+type LazyMessage = {
+  readonly id: string;
+  readonly content: string;
+  readonly createdAt: string;
+  readonly updatedAt: string;
+}
+
+export declare type Message = LazyLoading extends LazyLoadingDisabled ? EagerMessage : LazyMessage
+
+export declare const Message: (new (init: ModelInit<Message>) => Message) & {
+  copyOf(source: Message, mutator: (draft: MutableModel<Message>) => MutableModel<Message> | void): Message;
 }

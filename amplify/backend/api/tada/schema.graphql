@@ -82,3 +82,10 @@ type UsersData @model {
   username : String!
   tags: [String]
 }
+
+type Message @model {
+  id: ID!
+  content: String!
+  createdAt: String!
+  updatedAt: String!
+}

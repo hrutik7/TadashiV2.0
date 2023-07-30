@@ -36,6 +36,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import SignUp from './app/Screens/Signup/SignUp';
 import Confirmation from './app/Screens/Confirmation/Confirmation';
 import Tags from './app/Components/Tags/Tags';
+import { withInAppMessaging } from '@aws-amplify/ui-react-native';
 // import { API, graphqlOperation } from 'aws-amplify';
 // import { createTodo, updateTodo, deleteTodo } from './graphql/mutations';
 import { API } from 'aws-amplify';
@@ -43,6 +44,7 @@ import * as queries from './src/graphql/queries';
 import { Amplify, Auth } from 'aws-amplify';
 // import awsconfig from './aws-exports';
 import awsconfig from './src/aws-exports'
+import Message from './app/Screens/Messege/Message';
 
 Amplify.configure(awsconfig);
 
@@ -101,6 +103,11 @@ function App(): JSX.Element {
           options={{headerShown: false}}
           name="WaitingScreen"
           component={WaitingScreen}
+        />
+         <Stack.Screen
+          options={{headerShown: false}}
+          name="Message"
+          component={Message}
         />
       </Stack.Navigator>
     </NavigationContainer>

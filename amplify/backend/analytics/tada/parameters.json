@@ -1,0 +1,22 @@
+{
+  "appName": "tada",
+  "roleName": "pinpointLambdaRole3f33c8de",
+  "cloudformationPolicyName": "cloudformationPolicy3f33c8de",
+  "cloudWatchPolicyName": "cloudWatchPolicy3f33c8de",
+  "pinpointPolicyName": "pinpointPolicy3f33c8de",
+  "authPolicyName": "pinpoint_amplify_3f33c8de",
+  "unauthPolicyName": "pinpoint_amplify_3f33c8de",
+  "authRoleName": {
+    "Ref": "AuthRoleName"
+  },
+  "unauthRoleName": {
+    "Ref": "UnauthRoleName"
+  },
+  "authRoleArn": {
+    "Fn::GetAtt": [
+      "AuthRole",
+      "Arn"
+    ]
+  },
+  "pinpointInAppMessagingPolicyName": "pinpointInAppMessagingPolicyName3f33c8de"
+}

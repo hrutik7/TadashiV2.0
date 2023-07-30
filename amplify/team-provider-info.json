@@ -20,6 +20,21 @@
       },
       "storage": {
         "s3420d86fd": {}
+      },
+      "notifications": {
+        "Pinpoint": {
+          "Name": "tada-dev",
+          "Id": "a74a5308b4244373b94e069881d39923",
+          "Region": "us-east-1"
+        }
+      },
+      "analytics": {
+        "Pinpoint": {
+          "Name": "tada-dev",
+          "Id": "a74a5308b4244373b94e069881d39923",
+          "Region": "us-east-1"
+        },
+        "tada": {}
       }
     }
   }

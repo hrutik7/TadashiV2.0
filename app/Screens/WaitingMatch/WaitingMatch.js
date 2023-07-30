@@ -43,7 +43,10 @@ const WaitingScreen = ({navigation}) => {
                         // marginTop: 20,
                         }}
                     title="update tags"
-                    onPress={() => navigation.navigate("TagsScreen")}
+                    onPress={() =>{ 
+                      navigation.navigate("Message")
+                      // navigation.navigate("TagsScreen")
+                    }}
                 />
 
 <CustomTouchableOpacity

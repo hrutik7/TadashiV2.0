@@ -16,9 +16,11 @@ const Confirmation = ({navigation}) => {
 
     console.log(username,parseInt(code))
     try {
-      const user = await Auth.signIn(username, code);
+      const user = await Auth.confirmSignUp(username, code);
       console.log(user,"user is here....")
+      navigation.navigate("Login")
     } catch (error) {
+      Alert.alert(error)
       console.log('error signing in', error);
     }
   }
@@ -29,6 +31,9 @@ const Confirmation = ({navigation}) => {
         backgroundColor: '#EDE4FF',
       }}>
       
+      <View style={styles.header}>
+        <Text style={styles.Titlecontainer}>Enter the verifacation code </Text>
+      </View>
 
       <View style={styles.InputContainer}>
         <InputField
@@ -71,6 +76,17 @@ const styles = StyleSheet.create({
     backgroundColor: 'green',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  header: {
+    flex: 1,
+    marginTop: '20%',
+  },
+  Titlecontainer: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: 'black',
+    alignSelf: 'center',
+    marginTop: 20,
   },
   AlreadyContainer:{
     
