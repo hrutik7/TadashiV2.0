@@ -21,21 +21,21 @@ const Tags = ({navigation}) => {
   const [gender,setGender] = useState('')
 
 
-  // const deleteEntry = async () =>{
-  //   try {
-  //     const todoDetails = {
-  //       id: '7a4f3b79-fcc0-4dcb-9f48-e01260b8ff82',
-  //     };
+  const deleteEntry = async () =>{
+    try {
+      const todoDetails = {
+        id: 'b432b294-bc14-43f1-a3ab-68316a125602',
+      };
       
-  //     const deletedTodo = await API.graphql({ 
-  //       query: deleteUsersData, 
-  //       variables: { input: todoDetails }
-  //     });
-  //     console.log(deletedTodo)
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
+      const deletedTodo = await API.graphql({ 
+        query: deleteUsersData, 
+        variables: { input: todoDetails }
+      });
+      console.log(deletedTodo,"deleted data")
+    } catch (error) {
+      console.log(error,"err")
+    }
+  }
 
 
   const postUserData = async () => {
@@ -150,8 +150,8 @@ function changeScreen(screenName) {
       />:<CustomTouchableOpacity
       title="Submit"
       onPress={() => {
-        // handlePress(); 
-        deleteEntry()
+        handlePress(); 
+        // deleteEntry()
       }}
       style={{
         marginTop: 30,

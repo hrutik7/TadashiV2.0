@@ -27,6 +27,7 @@
         "aws-amplify": "^5.3.5",
         "aws-sdk": "^2.1425.0",
         "core-js": "^3.31.1",
+        "express": "^4.18.2",
         "react": "18.2.0",
         "react-native": "0.72.3",
         "react-native-get-random-values": "^1.9.0",
@@ -37,7 +38,9 @@
         "react-native-sqlite-storage": "^6.0.1",
         "react-native-svg": "^13.10.0",
         "react-native-url-polyfill": "^2.0.0",
-        "react-redux": "^8.1.1"
+        "react-redux": "^8.1.1",
+        "socket.io": "^4.7.1",
+        "socket.io-client": "^4.7.1"
     },
     "devDependencies": {
         "@babel/core": "^7.20.0",

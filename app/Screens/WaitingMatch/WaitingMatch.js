@@ -43,7 +43,7 @@ const WaitingScreen = ({navigation}) => {
 
     let nextjwt = nextToken.accessToken.jwtToken
     console.log(nextjwt,"==========================================")
-    const { data , errors} = await API.graphql({
+    const { data } = await API.graphql({
       query: listUsersData,
       variables: {
         filter : null,
@@ -51,17 +51,14 @@ const WaitingScreen = ({navigation}) => {
         token: nextjwt, // Use the nextToken to paginate
       },
     });
-    if (errors) {
-      console.error('GraphQL errors:', errors);
-      return;
-    }
+    
     const newUsers = data.listUserInfos.items;
     const newNextToken = data.listUserInfos.nextToken;
 console.log(data.listUserInfos.items,"here is data")
     setUsers((prevUsers) => [...prevUsers, ...newUsers]);
     setNextToken(nextjwt);
   } catch (error) {
-    console.error('Error fetching user information:', error.data.listUsersData.items);
+    console.error('Error fetching user information:', error);
   }
 
 
@@ -99,7 +96,7 @@ console.log(data.listUserInfos.items,"here is data")
                         }}
                     title="update tags"
                     onPress={() =>{ 
-                      navigation.navigate("Message")
+                      navigation.navigate("ChatScreen")
                       // navigation.navigate("TagsScreen")
                     }}
                 />

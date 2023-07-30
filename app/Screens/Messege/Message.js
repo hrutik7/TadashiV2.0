@@ -1,88 +1,59 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, TextInput, TouchableOpacity } from 'react-native';
-import { API, graphqlOperation, Auth } from 'aws-amplify';
-// import { listMessages } from './src/graphql/queries';
-// import { onCreateMessage } from './src/graphql/subscriptions';
-// import { createMessage } from './src/graphql/mutations';
-import { listMessages } from '../../../src/graphql/queries';
-import { onCreateMessage } from '../../../src/graphql/subscriptions';
-import { createMessage } from '../../../src/graphql/mutations';
+import React,{useState,useEffect} from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { createStackNavigator } from '@react-navigation/native';
+import SocketIOClient from 'socket.io-client';
+import { TextInput,Button } from 'react-native';
+const socket = SocketIOClient('http://localhost:3000');
 
-const Message = () => {
+socket.on('connect', () => {
+  console.log('Connected to server');
+});
+
+socket.on('disconnect', () => {
+  console.log('Disconnected from server');
+});
+
+socket.on('chat message', (msg) => {
+  console.log('New message:', msg);
+});
+
+const sendMessage = (msg) => {
+  socket.emit('chat message', msg);
+};
+
+const ChatScreen = () => {
   const [messages, setMessages] = useState([]);
-  const [newMessage, setNewMessage] = useState('');
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
-    fetchMessages(); // Fetch existing messages
-    subscribeToNewMessages(); // Subscribe to real-time message updates
-  }, []);
-
-  const fetchMessages = async () => {
-    try {
-      const messageData = await API.graphql(graphqlOperation(listMessages));
-      setMessages(messageData.data.listMessages.items);
-    } catch (error) {
-      console.error('Error fetching messages:', error);
-    }
-  };
-
-  const subscribeToNewMessages = async () => {
-    const subscription = API.graphql(graphqlOperation(onCreateMessage)).subscribe({
-      next: (eventData) => {
-        const newMessage = eventData.value.data.onCreateMessage;
-        setMessages((prevMessages) => [...prevMessages, newMessage]);
-      },
-      error: (error) => {
-        console.error('Error subscribing to new messages:', error);
-      },
+    socket.on('chat message', (msg) => {
+      setMessages([...messages, msg]);
     });
+  }, [messages]);
 
-    return () => subscription.unsubscribe(); // Cleanup the subscription when component unmounts
+  const handleSendMessage = () => {
+    sendMessage(message);
+    setMessage('');
   };
-
-  const handleSendMessage = async () => {
-    if (!newMessage) return;
-
-    const message = {
-      content: newMessage,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-    };
-
-    try {
-      await API.graphql(graphqlOperation(createMessage, { input: message }));
-      setNewMessage('');
-    } catch (error) {
-      console.error('Error sending message:', error);
-    }
-  };
-
-  const renderMessageItem = ({ item }) => (
-    <View>
-      <Text>{item.content}</Text>
-    </View>
-  );
 
   return (
     <View>
-      <FlatList
-        data={messages}
-        renderItem={renderMessageItem}
-        keyExtractor={(item) => item.id}
-      />
+      <Text>Chat Screen</Text>
       <View>
-        <TextInput
-          style={{ borderWidth: 1, borderColor: 'gray', padding: 10 }}
-          placeholder="Type your message"
-          value={newMessage}
-          onChangeText={(text) => setNewMessage(text)}
-        />
-        <TouchableOpacity onPress={handleSendMessage} style={{ backgroundColor: 'blue', padding: 10 }}>
-          <Text style={{ color: 'white' }}>Send</Text>
-        </TouchableOpacity>
+        {messages.map((msg, index) => (
+          <Text key={index}>{msg}</Text>
+        ))}
       </View>
+      <TextInput
+        value={message}
+        onChangeText={setMessage}
+      />
+      <Button
+        title="Send"
+        onPress={handleSendMessage}
+      />
     </View>
   );
 };
 
-export default Message;
+export default ChatScreen;

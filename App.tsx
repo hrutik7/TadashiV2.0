@@ -44,13 +44,16 @@ import * as queries from './src/graphql/queries';
 import { Amplify, Auth } from 'aws-amplify';
 // import awsconfig from './aws-exports';
 import awsconfig from './src/aws-exports'
-import Message from './app/Screens/Messege/Message';
-
+import ChatScreen from './app/Screens/Messege/Message';
+import SocketIOClient from 'socket.io-client';
 Amplify.configure(awsconfig);
 
 
 const todo = { name: "My first todo", description: "Hello world!" };
 const Stack = createNativeStackNavigator();
+
+
+
 function App(): JSX.Element {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -106,8 +109,8 @@ function App(): JSX.Element {
         />
          <Stack.Screen
           options={{headerShown: false}}
-          name="Message"
-          component={Message}
+          name="ChatScreen"
+          component={ChatScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>
