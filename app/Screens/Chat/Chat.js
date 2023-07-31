@@ -1,5 +1,5 @@
 import React,{useState,useLayoutEffect,useEffect} from "react";
-import { View, Text, Pressable, SafeAreaView, FlatList ,StyleSheet} from "react-native";
+import { View, Text, Pressable, SafeAreaView, FlatList ,StyleSheet, TouchableOpacity} from "react-native";
 // import { Feather } from "@expo/vector-icons";
 // import { socketIO } from "../../../server";
 // import ChatComponent from "../../component/ChatComponent/ChatComponent";
@@ -11,12 +11,13 @@ import CustomTouchableOpacity from "../../Components/Button/Button";
 const Chat = () => {
     const [visible, setVisible] = useState(false);
     const [rooms, setRooms] = useState([]);
+    
     useLayoutEffect(() => {
         function fetchGroups() {
             fetch("http://localhost:4000/api")
                 .then((res) => res.json())
                 .then((data) => setRooms(data))
-                .catch((err) => console.error(err));
+                .catch((err) => console.error(err<"err hain bro"));
         }
         fetchGroups();
     }, []);
@@ -24,11 +25,15 @@ const Chat = () => {
     //👇🏻 Runs whenever there is new trigger from the backend
     useEffect(() => {
 		socket.on("roomsList", (rooms) => {
+            console.log(rooms,"rooms")
 			setRooms(rooms);
 		});
 	}, [socket]);
 
-	const handleCreateGroup = () => setVisible(true);
+	const handleCreateGroup = () => {
+        console.log("clicked")
+        setVisible(true);
+    }
 
     
    
@@ -36,7 +41,7 @@ const Chat = () => {
         <SafeAreaView style={styles.chatscreen}>
             <View style={styles.chattopContainer}>
                 <View style={styles.chatheader}>
-                    <Text style={styles.chatheading}>Chats</Text>
+                    <Text style={styles.chatheading}>Potential Match</Text>
 
             {/* 👇🏻 Logs "ButtonPressed" to the console when the icon is clicked */}
                     {/* <Pressable onPress={() => {handleCreateGroup}}>
@@ -48,7 +53,7 @@ const Chat = () => {
 
                     
 
-                    <CustomTouchableOpacity
+                    {/* <CustomTouchableOpacity
             style={{
                 backgroundColor: '#6528F7',
                 width: '20%',
@@ -58,7 +63,13 @@ const Chat = () => {
                 }}
             title="Create"
             onPress={() => {handleCreateGroup}}
-        />
+        /> */}
+
+        <TouchableOpacity    onPress={() => {handleCreateGroup()}}>
+            <Text style={{color:"black"}}>
+               Match
+            </Text>
+        </TouchableOpacity>
                 </View>
             </View>
 
@@ -71,8 +82,8 @@ const Chat = () => {
                     />
                 ) : (
                     <View style={styles.chatemptyContainer}>
-                        <Text style={styles.chatemptyText}>No rooms created!</Text>
-                        <Text>Click the icon above to create a Chat room</Text>
+                        <Text style={styles.chatemptyText}>No Match Found!</Text>
+                        <Text>Click On the room for joining your potential match</Text>
                     </View>
                 )}
             </View>
@@ -118,7 +129,7 @@ export const styles = StyleSheet.create({
         fontWeight: "600",
     },
     chatscreen: {
-        backgroundColor: "#F7F7F7",
+        backgroundColor: "#EDE4FF",
         flex: 1,
         padding: 10,
         position: "relative",
@@ -126,7 +137,7 @@ export const styles = StyleSheet.create({
     chatheading: {
         fontSize: 24,
         fontWeight: "bold",
-        color: "green",
+        color: "#6528F7",
     },
     chattopContainer: {
         backgroundColor: "#F7F7F7",

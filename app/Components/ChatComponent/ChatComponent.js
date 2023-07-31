@@ -3,7 +3,7 @@ import React, { useLayoutEffect, useState } from "react";
 // import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 // import { styles } from "../utils/styles";
-
+import Icon from 'react-native-ionicons'
 const ChatComponent = ({ item }) => {
     const navigation = useNavigation();
     const [messages, setMessages] = useState({});
@@ -23,12 +23,13 @@ const ChatComponent = ({ item }) => {
 
     return (
         <Pressable style={styles.cchat} onPress={handleNavigation}>
-            {/* <Ionicons
-                name='person-circle-outline'
-                size={45}
-                color='black'
-                style={styles.cavatar}
-            /> */}
+              <Icon
+                        name='person-circle-outline'
+                        size={30}
+                        color='black'
+                       
+                    />
+
 
             <View style={styles.crightContainer}>
                 <View>

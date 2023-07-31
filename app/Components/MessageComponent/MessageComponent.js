@@ -1,6 +1,6 @@
 import { View, Text ,StyleSheet} from "react-native";
 import React from "react";
-// import { Ionicons } from "@expo/vector-icons";
+import Icon from 'react-native-ionicons'
 // import { styles } from "../utils/styles";
 
 export default function MessageComponent({ item, user }) {
@@ -16,12 +16,12 @@ export default function MessageComponent({ item, user }) {
                 }
             >
                 <View style={{ flexDirection: "row", alignItems: "center" }}>
-                    {/* <Ionicons
+                    <Icon
                         name='person-circle-outline'
                         size={30}
                         color='black'
-                        style={styles.mavatar}
-                    /> */}
+                       
+                    />
                     <View
                         style={
                             status

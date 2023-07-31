@@ -10,7 +10,12 @@ const http = require("http").Server(app);
 const cors = require("cors");
 
 app.use(cors());
-export const socketIO = require('socket.io')(http, {
+
+const generateID = () => Math.random().toString(36).substring(2, 10);
+let chatRooms = [];
+
+
+const socketIO = require('socket.io')(http, {
     cors: {
         origin: "<http://localhost:3000>"
     }

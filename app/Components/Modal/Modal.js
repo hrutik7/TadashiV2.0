@@ -11,15 +11,16 @@ const Modal = ({ setVisible }) => {
     //👇🏻 Logs the group name to the console
     const handleCreateRoom = () => {
         //👇🏻 sends a message containing the group name to the server
+        console.log("create room")
         socket.emit("createRoom", groupName);
         closeModal();
     };
     return (
         <View style={styles.modalContainer}>
-            <Text style={styles.modalsubheading}>Enter your Group name</Text>
+            <Text style={styles.modalsubheading}>Enter Username of partner</Text>
             <TextInput
                 style={styles.modalinput}
-                placeholder='Group name'
+                placeholder='name'
                 onChangeText={(value) => setGroupName(value)}
             />
 
@@ -28,7 +29,7 @@ const Modal = ({ setVisible }) => {
                     <Text style={styles.modaltext}>CREATE</Text>
                 </Pressable>
                 <Pressable
-                    style={[styles.modalbutton, { backgroundColor: "#E14D2A" }]}
+                    style={[styles.modalbutton, { backgroundColor: "#a2b223" }]}
                     onPress={closeModal}
                 >
                     <Text style={styles.modaltext}>CANCEL</Text>
@@ -139,7 +140,7 @@ export const styles = StyleSheet.create({
     modalbutton: {
         width: "40%",
         height: 45,
-        backgroundColor: "green",
+        backgroundColor: "#6528F7",
         borderRadius: 5,
         alignItems: "center",
         justifyContent: "center",
@@ -154,7 +155,7 @@ export const styles = StyleSheet.create({
         color: "#fff",
     },
     modalContainer: {
-        width: "100%",
+        width: "105%",
         borderTopColor: "#ddd",
         borderTopWidth: 1,
         elevation: 1,

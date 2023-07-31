@@ -6,79 +6,54 @@ import MessageComponent from "../../Components/MessageComponent/MessageComponent
 // import { styles } from "../utils/styles";
 
 const Message = ({ route, navigation }) => {
-    const [chatMessages, setChatMessages] = useState([
-        {
-            id: "1",
-            text: "Hello guys, welcome!",
-            time: "07:50",
-            user: "Tomer",
-        },
-        {
-            id: "2",
-            text: "Hi Tomer, thank you! 😇",
-            time: "08:50",
-            user: "David",
-        },
-    ]);
-    const [message, setMessage] = useState("");
     const [user, setUser] = useState("");
-    useLayoutEffect(() => {
-      navigation.setOptions({ title: name });
-      socket.emit("findRoom", id);
-      socket.on("foundRoom", (roomChats) => setChatMessages(roomChats));
-  }, []);
-  
-  //👇🏻 This runs when the messages are updated.
-  useEffect(() => {
-      socket.on("foundRoom", (roomChats) => setChatMessages(roomChats));
-  }, [socket])
-    //👇🏻 Access the chatroom's name and id
-    const { name, id } = route.params;
+	const { name, id } = route.params;
 
-//👇🏻 This function gets the username saved on AsyncStorage
-    const getUsername = async () => {
-        try {
-            const value = await AsyncStorage.getItem("username");
-            if (value !== null) {
-                setUser(value);
-            }
-        } catch (e) {
-            console.error("Error while loading username!");
-        }
-    };
-    useLayoutEffect(() => {
-      navigation.setOptions({ title: name });
+	const [chatMessages, setChatMessages] = useState([]);
+	const [message, setMessage] = useState("");
 
-      //👇🏻 Sends the id to the server to fetch all its messages
-      socket.emit("findRoom", id);
-  }, []);
-    //👇🏻 Sets the header title to the name chatroom's name
-    useLayoutEffect(() => {
-        navigation.setOptions({ title: name });
-        getUsername()
-    }, []);
+	const getUsername = async () => {
+		try {
+			const value = await AsyncStorage.getItem("username");
+			if (value !== null) {
+				setUser(value);
+			}
+		} catch (e) {
+			console.error("Error while loading username!");
+		}
+	};
 
-    /*👇🏻 
-        This function gets the time the user sends a message, then 
-        logs the username, message, and the timestamp to the console.
-     */
-    const handleNewMessage = () => {
-        const hour =
-            new Date().getHours() < 10
-                ? `0${new Date().getHours()}`
-                : `${new Date().getHours()}`;
+	const handleNewMessage = () => {
+		const hour =
+			new Date().getHours() < 10
+				? `0${new Date().getHours()}`
+				: `${new Date().getHours()}`;
 
-        const mins =
-            new Date().getMinutes() < 10
-                ? `0${new Date().getMinutes()}`
-                : `${new Date().getMinutes()}`;
+		const mins =
+			new Date().getMinutes() < 10
+				? `0${new Date().getMinutes()}`
+				: `${new Date().getMinutes()}`;
 
-        console.log({
-            message,
-            user,
-            timestamp: { hour, mins },
-        });
-    };
+		if (user) {
+			socket.emit("newMessage", {
+				message,
+				room_id: id,
+				user,
+				timestamp: { hour, mins },
+			});
+		}
+	};
+
+	useLayoutEffect(() => {
+		navigation.setOptions({ title: name });
+		getUsername();
+		socket.emit("findRoom", id);
+		socket.on("foundRoom", (roomChats) => setChatMessages(roomChats));
+	}, []);
+
+	useEffect(() => {
+		socket.on("foundRoom", (roomChats) => setChatMessages(roomChats));
+	}, [socket]);
 
     return (
         <View style={styles.messagingscreen}>
