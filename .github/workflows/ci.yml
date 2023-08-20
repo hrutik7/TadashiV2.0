@@ -1,18 +1,53 @@
-name: Prettier
-on: [push]
+name: Generate APK
+
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   build:
-    name: Prettier
+    name: Build APK
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: bahmutov/npm-install@v1
 
-      - run: npm run format
-      - run: git status
-      # commit any changed files
-      # https://github.com/mikeal/publish-to-github-action
-      - uses: mikeal/publish-to-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '11'
+
+      - name: Set up Android SDK
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'android-sdk'
+          java-version: '11'
+          android-platform: 30
+
+      - name: Cache Gradle dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Make Gradle executable
+        run: chmod +x ./android/gradlew
+
+      - name: Build APK
+        run: ./android/gradlew assembleRelease -PreactNativeDevProperties=default
+
+      - name: Copy APK to Artifacts
+        run: cp ./android/app/build/outputs/apk/release/app-release.apk ${{ github.workspace }}/app-release.apk
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v2
+        with:
+          name: app-release
+          path: ${{ github.workspace }}/app-release.apk
